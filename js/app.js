@@ -2,13 +2,13 @@ console.log(`sanity check`)
 
 // //**  */  Declare deck variables
 let wizard1, wizard2
-let winner, battlefield, cardStack, wand, tieBattle, endGame, deck
+let winner, battlefield, cardStack, wand, tieBattle, endGame, deck, cardsPicked
 // tieWandClick  ??
 
 
 //** */ Cached element references
-// let deckBF1 = []
-// let deckBF2 = []
+let wiz1Cards = []
+let wiz2Cards = []
 
 // let deck-start1 = []
 // let deck-start2 = []
@@ -18,8 +18,8 @@ let battleCard1 = document.getElementById('deckBF1')
 let battleCard2 = document.getElementById('deckBF2')
 
 
-let wiz1Cards = document.getElementById('deck-start1')
-let wiz2Cards = document.getElementById('deck-start2')
+let wiz1CardsDom = document.getElementById('deck-start1')
+let wiz2CardsDom = document.getElementById('deck-start2')
 let wandW1 = document.getElementById(btnW1)
 let wandW2 = document.getElementById(btnW2)
 
@@ -48,22 +48,22 @@ document.getElementById('btnW2').addEventListener('click', ()=> console.log('cli
 init()
 function init() {
   const deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
-  let wiz1Cards = []
-  let wiz2Cards = []
   if (deck.length > 0){
     let randIdx = Math.floor(Math.random()*deck.length)
     deck.sort(function(){
       return 0.5 - Math.random()})
     let cardsPicked = deck.splice(0, 26)
 
-    return wiz1Cards.push(cardsPicked)
-    return wiz2Cards = wiz2Cards.push(deck)
+    wiz1Cards.push(cardsPicked)
+    wiz2Cards.push(deck)
+
 }}
 
-// console.log(cardsPicked)
+console.log(cardsPicked)
 console.log('OG DECK', deck)
 console.log('FIRST DECK', wiz1Cards)
 console.log('SECOND DECK', wiz2Cards)
+
 
 
 // specify sedond deck is 26 in length
@@ -72,15 +72,15 @@ console.log('SECOND DECK', wiz2Cards)
 // let b = deck.splice(0,26);
 // console.log(b)
 
-// function handleClick1(){
-// // to prevent error on click when no cards are left
-// if (deckBF1.length > 0){
-//   let randIdx = Math.floor(Math.random()*deckBF1.length)
-//   let cardPicked1 = deckBF1.splice(randIdx, 1)
-//   battleCard1.push(cardPicked1)
-//   render(cardPicked1)   
-//   } 
-// }
+function handleClick1(){
+// to prevent error on click when no cards are left
+if (deckBF1.length > 0){
+  let randIdx = Math.floor(Math.random()*deckBF1.length)
+  let cardPicked1 = deckBF1.splice(randIdx, 1)
+  battleCard1.push(cardPicked1)
+  render(cardPicked1)   
+  } 
+}
 
 // function handleClick2(){
 //   // to prevent error on click when no cards are left
