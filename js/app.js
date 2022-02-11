@@ -9,6 +9,7 @@ let winner, battlefield, cardStack, wand, tieBattle, endGame, deck, cardsPicked,
 //** */ Cached element references
 let wiz1Cards = []
 let wiz2Cards = []
+let cardsToRemove = []
 
 // let deck-start1 = []
 // let deck-start2 = []
@@ -96,7 +97,7 @@ console.log(`wz hand 2`, cardPicked2)
 
 // function cardPicked1(){
 //   // randomly select from card in their own pile
-//   renderCompare() 
+  // renderCompare() 
 //   //assign card with random index to a variable
 //   //add card picked to battleCard area
 //   //pass card to renderCompare function to display
@@ -110,22 +111,22 @@ console.log(`wz hand 2`, cardPicked2)
 // }
 
 
-// function renderCompare() {
-//   //cards picked by 1 & 2 compaired
-//   if (cardPicked2 > cardPicked1){
-//     let (cardToRemove = cardPicked1 && cardPicked2)
-//     render wiz2Cards.push(cardToRemove)
-//   }else if (cardPicked1 > cardPicked2){
-//     let (cardToRemove = cardPicked1 && cardPicked2)
-//     render wiz2Cards.push(cardToRemove)
-//   }else if (cardPicked1 === cardPicked2) {
-//     render tiePlay()
-//   }
+function renderCompare() {
+  //cards picked by 1 & 2 compaired
+  if (cardPicked2 > cardPicked1){
+    let (cardsToRemove = cardPicked1 && cardPicked2)
+    return wiz2Cards.push(cardsToRemove)
+  }else if (cardPicked1 > cardPicked2){
+    let (cardsToRemove = cardPicked1 && cardPicked2)
+    return wiz1Cards.push(cardsToRemove)
+  }else if (cardPicked1 === cardPicked2) {
+    return tiePlay()
+  }
   // if > wins, return message, pull cards to winners pile
   // else if tie, return tie message, render tiePlay function
   // lose(,,,? probably cue victory function)
   // render (init) OR gameState ? might be card picked...
-// }
+}
 
 
 function tiePlay(){
