@@ -11,7 +11,7 @@ let wiz1Cards = []
 let wiz2Cards = []
 let cardsToRemove = []
 
-let decK = {
+let keyValues = {
   dA: 1, dQ: 12, dK: 13, dJ: 11, d10: 10, d09: 9, d08: 8, d07: 7, d06: 6, d05: 5, d04: 4, d03: 3, d02: 2, hA: 1, hQ: 12, hK: 13, hJ: 11, h10: 10, h09: 9, h08: 8, h07: 7, h06: 6, h05: 5, h04: 4, h03: 3, h02: 2, cA: 1, cQ:12, cK: 13, cJ: 11, c10: 10, c09: 9, c08: 8, c07: 7, c06: 6, c05: 5, c04: 4, c03: 3,c02: 2, sA: 1, sQ: 12, sK: 13, sJ: 11, s10: 10, s09: 9, s08: 8, s07: 7, s06: 6, s05: 5, s04: 4, s03: 3, s02: 2,
 }
 
@@ -113,7 +113,7 @@ function renderCompare() {
   // lose(,,,? probably cue victory function)
   // render (init) OR gameState ? might be card picked...
 }
-
+// comment to add and check push functionality
 
 function tiePlay(){
   // hidden button appears?  
