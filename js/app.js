@@ -1,13 +1,9 @@
 // //**  */  Declare deck variables
 let wizard1, wizard2
-let winner, battlefield, cardStack, wand, tieBattle, endGame,  cardsPicked, cardPicked1, cardPicked2
+let winner, battlefield, wand, endGame,  cardsPicked, cardPicked1, cardPicked2
 // tieWandClick  ??
-const gameStatus = document.querySelector('#message')
 
 //** */ Cached element references
-let wiz1Cards = []
-let wiz2Cards = []
-let cardsToRemove = []
 
 
 let keyValues = {
@@ -16,15 +12,21 @@ let keyValues = {
 const deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
 
+let wiz1Cards = []
+let wiz2Cards = []
+let cardToRemove = []
+let battleCard1 = []
+let battleCard2 = []
 
-let battleCard1 = document.getElementById('deckBF1')
-let battleCard2 = document.getElementById('deckBF2')
+let battleCard1Dom = document.getElementById('deckBF1')
+let battleCard2Dom = document.getElementById('deckBF2')
 
 let wiz1CardsDom = document.getElementById('deck-start1')
 let wiz2CardsDom = document.getElementById('deck-start2')
 let wandW1 = document.getElementById(btnW1)
 let wandW2 = document.getElementById(btnW2)
 const tieBtn = document.querySelector('#tieBtn')
+const gameStatus = document.querySelector('#message')
 gameStatus.textContent = message
 
 
@@ -39,26 +41,17 @@ tieBtn.addEventListener('click', tiePlay)
 // handleclickStart (choose wizard?)
 
 //** */ Functions
-// shuffle 
-// split card array into two arrays
-// random assortment - half deck - into each
-// function cardValue() {
-//   const randomIndex = Math.floor(Math.random() * (deck.length))
-//   const selectedCard = deck[randomIndex]
-//   const cardValue = keyValues[selectedCard]
-//   console.log('c05', cardValue)
-// }
-// console.log('c08:', cardValue())
-
-
 
 
 init()
 function init(){
+  let wiz1CardsDom = wiz1Cards
+  let wiz2CardsDom = wiz2Cards
+  let battleCard1Dom = battleCard1 
+  let battleCard2Dom = battleCard2
+
   if (deck.length > 0){
-    let randomIndex = Math.floor(Math.random()*deck.length)
-    // const selectedCard = deck[randomIndex]
-    // const cardValue = keyValues[selectedCard]
+    let randomIndex = Math.floor(Math.random() * (deck.length))
     deck.sort(function(){
       return 0.5 - Math.random()})
     let cardsPicked = deck.splice(0, 26)
@@ -66,7 +59,11 @@ function init(){
     wiz1Cards.push(cardsPicked)
     wiz2Cards.push(deck)
     message.textContent = `Wands at the ready!`
-}}
+
+    handleClick1()
+    handleClick2()
+  }
+}
 
 console.log(cardsPicked)
 console.log('OG DECK', deck)
@@ -74,69 +71,86 @@ console.log('FIRST DECK', wiz1Cards)
 console.log('SECOND DECK', wiz2Cards)
 
 
-// turn function???
+// function render(){
+//   // console.log(cardPicked)
+//   if (wiz1Cards.length > 1){
+//     battleCard1.classList.remove(cardToRemove)
+//   }
+//   battleCard1.classList.add(cardPicked)
+//   if (wiz1Cards.length >= 26) {
+//     battleCard1.classList.add('shadow')
+//     battleCard2.remove('shadow')
+//   }
+//   if (wiz2Cards.length >= 26) {
+//     battleCard2.classList.add('shadow')
+//     battleCard1.remove('shadow')
+//   }
+//   if (wiz2Cards.length === 0){
+//     wiz2Cards.classList.add('outline')
 
+//   }
+// }
+// turn function???
 // specify sedond deck is 26 in length
 // let deck two equal (change name )
 // let b = deck.splice(0,26);
 // console.log(b)
+
 function handleClick1(event){
 // to prevent error on click when no cards are left
 // when wand is clicked, pick card from wiz_Cards
 // play card to battleCard_ 
 if (wiz1Cards.length > 0){
-  let randIdx = Math.floor(Math.random()*wiz1Cards.length)
-  let cardPicked1 = wiz1Cards.splice(randIdx, 1)
+  let randomIndex = Math.floor(Math.random() * (wiz1Cards.length))
+  let cardPicked1 = wiz1Cards.splice(randomIndex, 1)
   battleCard1.push(cardPicked1)
-  render(cardPicked1)
-}}
-console.log(`wz hand 1`, cardPicked1)
+}  else if(
+  wiz2Cards.length === 0){
+    return victory()
+  }
+  // render()
+  renderCompare()
+}
+console.log(`card picked 1`, cardPicked1)
 
-function handleClick2() {
-// to prevent error on click when no cards are left
-// when wand is clicked, pick card from wiz_Cards
-// play card to battleCard_ 
-if (wiz2Cards.length > 0){
+function handleClick2() { 
+  if (wiz2Cards.length > 0){
   let randomIndex = Math.floor(Math.random()* (wiz2Cards.length))
-  let cardPicked2 = wiz2Cards.splice(randIdx, 1)
-  battleCard2.push(cardPicked2)
+    let cardPicked2 = wiz2Cards.splice(randomIndex, 1)
+    battleCard2.push(cardPicked2)
   // render(cardPicked2)
-
   }
   else if(
     wiz2Cards.length === 0){
       return victory()
     }
+  // render()
+  renderCompare()
 }
-console.log(`wz hand 2`, cardPicked2)
+console.log(`card picked 2`, cardPicked2)
 
 
 
 function renderCompare() {
-  //cards picked by 1 & 2 compaired
-  // function cardValue??
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]
   if (cardValue2 > cardValue1){
     console.log
-    let (cardsToRemove = cardPicked1 && cardPicked2)
-    return wiz2Cards.push(cardsToRemove)
+    let (cardToRemove = cardPicked1 && cardPicked2)
+    return wiz2Cards.push(cardToRemove)
     return message.textContent = `${wizard2} takes the advantage`
     tieBtn.setAttribute("hidden", true)
   }
   else if (cardValue1 > cardValue2){
-    let (cardsToRemove = cardPicked1 && cardPicked2)
-    return wiz1Cards.push(cardsToRemove)
+    let (cardToRemove = cardPicked1 && cardPicked2)
+    return wiz1Cards.push(cardToRemove)
     message.textContent = `${wizard1} takes the advantage`
     tieBtn.setAttribute("hidden", true)
   }else if (cardValue1 === cardValue2) {
-    return tiePlay()
     message.textContent = `They parried your spell! Strike again!`
+    return tiePlay()
   }
-  // if > wins, return message, pull cards to winners pile
-  // else if tie, return tie message, render tiePlay function
-  // lose(,,,? probably cue victory function)
-  // render (init) OR gameState ? might be card picked...
+  render()
 }
 // comment to add and check push functionality
 
@@ -152,6 +166,7 @@ function tiePlay(){
   // tie button plays three cards???  
   
   // message.textContent = `Get up, dust yourself off. It's not over yet.`
+  // render()
 }
 
 function victory(){
