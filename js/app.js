@@ -4,7 +4,7 @@ console.log(`sanity check`)
 let wizard1, wizard2
 let winner, battlefield, cardStack, wand, tieBattle, endGame,  cardsPicked, cardPicked1, cardPicked2
 // tieWandClick  ??
-
+const gameStatus = document.querySelector('#message')
 
 //** */ Cached element references
 let wiz1Cards = []
@@ -16,16 +16,16 @@ let keyValues = {
 }
 const deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
   
-deck.forEach(function(el){
-  if (keyValues[face] === deck[el]) {
-    return keyValues(num)
-  }
-}
-)
+// deck.forEach(function(el){
+//   if (keyValues[face] === deck[el]) {
+//     return keyValues(num)
+//   }
+// }
+// )
 
 let battleCard1 = document.getElementById('deckBF1')
 let battleCard2 = document.getElementById('deckBF2')
-
+gameStatus.textContent = message
 
 let wiz1CardsDom = document.getElementById('deck-start1')
 let wiz2CardsDom = document.getElementById('deck-start2')
@@ -62,6 +62,7 @@ function init() {
 
     wiz1Cards.push(cardsPicked)
     wiz2Cards.push(deck)
+    message.textContent = `Wands at the ready!`
 }}
 
 
@@ -71,7 +72,7 @@ console.log('OG DECK', deck)
 console.log('FIRST DECK', wiz1Cards)
 console.log('SECOND DECK', wiz2Cards)
 
-
+// turn function???
 
 // specify sedond deck is 26 in length
 // let deck two equal (change name )
@@ -108,14 +109,14 @@ function renderCompare() {
   if (cardPicked2 > cardPicked1){
     let (cardsToRemove = cardPicked1 && cardPicked2)
     return wiz2Cards.push(cardsToRemove)
-    return message `${wizard2} takes the advantage`
+    return message.textContent = `${wizard2} takes the advantage`
   }else if (cardPicked1 > cardPicked2){
     let (cardsToRemove = cardPicked1 && cardPicked2)
     return wiz1Cards.push(cardsToRemove)
-    return message `${wizard1} takes the advantage`
+    message.textContent = `${wizard1} takes the advantage`
   }else if (cardPicked1 === cardPicked2) {
     return tiePlay()
-    return message `It's a tie...strike again!`
+    message.textContent = `They parried your spell! Strike again!`
   }
   // if > wins, return message, pull cards to winners pile
   // else if tie, return tie message, render tiePlay function
@@ -130,13 +131,14 @@ function tiePlay(){
   // renderCompare()
   battleCard1.push(cardPicked1)
   battleCard2.push(cardPicked2)
+  // message.textContent = `Get up, dust yourself off. It's not over yet.`
 }
 
 function victory(){
 // if (wiz1cards === 0 && battleCard1 ===0) {
-//   console.log(`${wizard2} is the victor! ${wizard1} died bravely in battle.`)
+//   message.textContent `${wizard2} is the victor! ${wizard1} died bravely in battle.`
 // }else if (wiz2cards === 0 && battleCard2 ===0 {
-//   console.log(`${wizard1} has defeated Voldemort! ${wizard2} died bravely in battleCard1.`)
+//   message.textContent = `${wizard1} has defeated the Dementors! ${wizard2} died bravely in battle.`
 //   }
 }
 
