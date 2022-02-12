@@ -31,15 +31,17 @@ let wiz1CardsDom = document.getElementById('deck-start1')
 let wiz2CardsDom = document.getElementById('deck-start2')
 let wandW1 = document.getElementById(btnW1)
 let wandW2 = document.getElementById(btnW2)
-
+const tieBtn = document.querySelector('#tieBtn')
 
 
 //** */  Event listeners
 
 
 document.getElementById('btnW1').addEventListener('click', handleClick1)
-
 document.getElementById('btnW2').addEventListener('click', handleClick2)
+tieBtn.addEventListener('click', tiePlay)
+
+
 // ()=> console.log('clicked')
 
 // handleClickWand (play card to battlefield), 
@@ -110,10 +112,12 @@ function renderCompare() {
     let (cardsToRemove = cardPicked1 && cardPicked2)
     return wiz2Cards.push(cardsToRemove)
     return message.textContent = `${wizard2} takes the advantage`
+    tieBtn.setAttribute("hidden", true)
   }else if (cardPicked1 > cardPicked2){
     let (cardsToRemove = cardPicked1 && cardPicked2)
     return wiz1Cards.push(cardsToRemove)
     message.textContent = `${wizard1} takes the advantage`
+    tieBtn.setAttribute("hidden", true)
   }else if (cardPicked1 === cardPicked2) {
     return tiePlay()
     message.textContent = `They parried your spell! Strike again!`
@@ -131,6 +135,11 @@ function tiePlay(){
   // renderCompare()
   battleCard1.push(cardPicked1)
   battleCard2.push(cardPicked2)
+  
+  tieBtn.removeAttribute("hidden")
+  // tie button appears, message Book of Spells (property of the half-blood prince)
+  // tie button plays three cards???  
+  
   // message.textContent = `Get up, dust yourself off. It's not over yet.`
 }
 
@@ -142,6 +151,7 @@ function victory(){
 //   }
 }
 
+console.log(tieBtn)
 // function cardToRemove()
 
 // function cardPicked1(){
