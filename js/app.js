@@ -1,6 +1,6 @@
 // //**  */  Declare deck variables
 let wizard1, wizard2
-let winner, battlefield, wand, endGame,  cardsPicked, cardPicked1, cardPicked2
+let winner, battlefield, wand, endGame, cardsPicked, cardPicked1, cardPicked2, card
 // tieWandClick  ??
 
 //** */ Cached element references
@@ -70,10 +70,8 @@ function gamePlay(){
 function handleClick1(event){
   let battleCard1 = []
   if (wiz1Cards.length > 0){
-  let randomIndex = Math.floor(Math.random() * (wiz1Cards.length))
-  let cardPicked1 = wiz1Cards[randomIndex]
-  battleCard1.push(cardPicked1)
-  // console.log(`CARDPICKED!`, cardPicked1)
+  let cardPicked1 = wiz1Cards.pop()
+    battleCard1.push(cardPicked1)
   }  else if(
   wiz2Cards.length === 0){
     return victory()
@@ -82,14 +80,11 @@ function handleClick1(event){
 }
 
 function handleClick2() { 
-  // to prevent error on click when no cards are left
-// when wand is clicked, pick card from wiz_Cards
-// play card to battleCard_ 
   let battleCard2 = []
   if (wiz2Cards.length > 0){
-  let randomIndex = Math.floor(Math.random()* (wiz2Cards.length))
-    let cardPicked2 = wiz2Cards[randomIndex]
-      // console.log(`CARDPICKED!`, cardPicked2)
+  let randomIndex = Math.floor(Math.random() * (wiz2Cards.length))
+    let cardPicked2 = wiz2Cards.pop()
+      console.log(`CARDPICKED!`, cardPicked2)
     battleCard2.push(cardPicked2)
   // render(cardPicked2)
   }
@@ -147,6 +142,9 @@ function renderCompare() {
 // comment to add and check push functionality
 
 function tiePlay(){
+  //** play two cards face down 
+  //** play one card face up aka card picked 1 & 2   */
+  // renderCompare()
 //   // hidden button appears?  
 //   // plays three cards, two face down, one up
 //   // renderCompare()
@@ -158,19 +156,18 @@ function tiePlay(){
 //   battleCard2.push(cardPicked2)
 
 //   return message.textContent = `Get up, dust yourself off. It's not over yet.`
-  // handleClick1()
-  // handleClick2()
 //   render()
 }
 
 function victory(){
-// if (wiz1cards.length === 0 && battleCard1.length === 0) {
-//   return message.textContent `${wizard2} is the victor! ${wizard1} died bravely in battle.`
-// }else if (wiz2cards.length === 0 && battleCard2.length === 0) {
-//   return message.textContent = `${wizard1} has defeated the Dementors! ${wizard2} died bravely in battle.`
-//   }
+if (wiz1cards.length === 0 && battleCard1.length === 0) {
+  return message.textContent `${wizard2} is the victor! ${wizard1} died bravely in battle.`
+}else if (wiz2cards.length === 0 && battleCard2.length === 0) {
+  return message.textContent = `${wizard1} has defeated the Dementors! ${wizard2} died bravely in battle.`
+  }
 }
 
+///** decide on language for victory message */
 
 // function cardToRemove()
 
