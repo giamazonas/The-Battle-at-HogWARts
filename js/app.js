@@ -9,12 +9,10 @@ let wizard1, wizard2
 let winner, battlefield, wand, endGame, cardsPicked, cardPicked1, cardPicked2, card
 
 //** */ Cached element references
-let wiz1Cards = []
-let wiz2Cards = []
-let cardToRemove = []
+let wiz1Cards = [], wiz2Cards = [], cardToRemove = [], battleCard1 = [], battleCard2 = []
 
-let battleCard1 = document.getElementById('deckBF1')
-let battleCard2 = document.getElementById('deckBF2')
+let battleCard1Dom = document.getElementById('deckBF1')
+let battleCard2Dom = document.getElementById('deckBF2')
 
 let wiz1CardsDom = document.getElementById('deck-start1')
 let wiz2CardsDom = document.getElementById('deck-start2')
@@ -34,13 +32,13 @@ gameOverBtn.addEventListener('click', init)
 
 //** */ Functions
 
-// init()
+init()
 function init(){
     message.textContent = `Wands at the ready!`
     gameOverBtn.setAttribute('hidden', true)
   console.log('init invoked')
   shuffle()
-  render()
+  // render()
 }
 
 function shuffle(){
@@ -48,44 +46,36 @@ function shuffle(){
     let randomIndex = Math.floor(Math.random() * (deck.length))
     deck.sort(function(){
       return 0.5 - Math.random()})
-    let wiz1Cards = deck.slice(0, 26)
-    let wiz2Cards = deck.slice(26, 52)
-    console.log(wiz1Cards)
-    console.log(wiz2Cards)
+    wiz1Cards = deck.slice(0, 26)
+    wiz2Cards = deck.slice(26, 52)
   }
 }
 // console.log('OG DECK', deck)
-// console.log('FIRST DECK', wiz1Cards)
-// console.log('SECOND DECK', wiz2Cards)
+console.log('FIRST DECK', wiz1Cards)
+console.log('SECOND DECK', wiz2Cards)
 
 // function handleClick
 
 function handleClick1(){
-  let battleCard1 = []
-  if (deck.length > 0){
-  // let randomIndex = Math.floor(Math.random() * (wiz1Cards.length))
-  // console.log(wiz1Cards)
-  let cardPicked1 = wiz2Cards.pop()
+  if (wiz1Cards.length > 0){
+    cardPicked1 = wiz1Cards.pop()
     battleCard1.push(cardPicked1)
-    console.log(battleCard1)
-    renderCompare()
-  console.log(`CARDPICKED1`, cardPicked1)
-
-
-  }  
-}
-
-function handleClick2() { 
-  let battleCard2 = []
-  if (wiz2Cards.length > 0){
-  // let randomIndex = Math.floor(Math.random() * (wiz2Cards.length))
-    let cardPicked2 = wiz2Cards.pop()
-      console.log(`CARDPICKED2`, cardPicked2)
-    battleCard2.push(cardPicked2)
-  // render(cardPicked2)
   }
   renderCompare()
 }
+console.log(battleCard1)
+
+
+function handleClick2() { 
+  if (wiz2Cards.length > 0){
+    cardPicked2 = wiz2Cards.pop()
+      console.log(`CARDPICKED2`, cardPicked2)
+    battleCard2.push(cardPicked2)
+  }
+  renderCompare()
+}
+console.log(battleCard2)
+
 
 function render(){
   gameStatus.textContent = message
@@ -93,18 +83,18 @@ function render(){
 }
 
 function renderCompare() {
-  const cardValue1 = keyValues[cardPicked1]
-  const cardValue2 = keyValues[cardPicked2]
+  // turn = 
+  const cardValue1 = keyValues[battleCard1]
+  const cardValue2 = keyValues[battleCard2]
   if (cardValue2 > cardValue1){
-    // console.log
-    let (cardToRemove = cardPicked1 && cardPicked2)
+    cardToRemove = (battleCard1 && battleCard2)
     wiz2Cards.push(cardToRemove)
     message.textContent = `${wizard2} takes the advantage`
     tieBtn.setAttribute("hidden", true)
     gamePlay()
   }
   else if (cardValue1 > cardValue2){
-    let (cardToRemove = cardPicked1 && cardPicked2)
+    cardToRemove = (battleCard1 && battleCard2)
     deck.push(cardToRemove)
     message.textContent = `${wizard1} takes the advantage`
     tieBtn.setAttribute("hidden", true)
@@ -113,13 +103,23 @@ function renderCompare() {
     message.textContent = `They parried your spell! Strike again!`
     tiePlay()
   }
-  // render()
+  render()
 }
 // comment to add and check push functionality
 
 function tiePlay(){
   //** play two cards face down 
   //** play one card face up aka card picked 1 & 2   */
+  // let appendCard1
+  // let appendCard2
+  // battleCard1.forEach(function(card, idx) {
+  //   appendCard = document.createElement('div')
+  //   appendCard.id = idx 
+  // })
+  // battleCard2.forEach(function(card, idx) {
+  //   appendCard = document.createElement('div')
+  //   appendCard.id = idx 
+  // })
 }
 
 function victory(){
@@ -128,13 +128,12 @@ if (deck.length === 0 && battleCard1.length === 0) {
   }else if (wiz2cards.length === 0 && battleCard2.length === 0) {
   return message.textContent = `${wizard1} is the victor! ${wizard2} died bravely in battle.`
   }
-  // gameOverBtn.removeAttribute('hidden')
+  gameOverBtn.removeAttribute('hidden')
 }
-
-///** decide on language for victory message */
 
 
 //***  TIE PLAY  */
+
 //extra
   // renderCompare()
 //   // hidden button appears?  
