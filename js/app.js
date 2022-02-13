@@ -47,73 +47,52 @@ function init(){
     let randomIndex = Math.floor(Math.random() * (deck.length))
     deck.sort(function(){
       return 0.5 - Math.random()})
-    let cardsPicked = deck.splice(0, 26)
-
-    wiz1Cards.push(cardsPicked)
-    wiz2Cards.push(deck)
+    let wiz2Cards = deck.splice(0, 26)
+    // wiz1Cards.push(cardsPicked)
+    // wiz2Cards.push(deck)
     message.textContent = `Wands at the ready!`
   }
-  gamePlay()
+  // gamePlay()
 }
 
-console.log(cardsPicked)
-console.log('OG DECK', deck)
-console.log('FIRST DECK', wiz1Cards)
+// console.log('OG DECK', deck)
+console.log('FIRST DECK', deck)
 console.log('SECOND DECK', wiz2Cards)
 
-function gamePlay(){
-  message.textContent = `Wands at the ready!`
-  handleClick1()
-  handleClick2()
-}
 
 function handleClick1(event){
   let battleCard1 = []
-  if (wiz1Cards.length > 0){
-  let cardPicked1 = wiz1Cards.pop()
+  if (deck.length > 0){
+  // let randomIndex = Math.floor(Math.random() * (wiz1Cards.length))
+  // console.log(wiz1Cards)
+  let cardPicked1 = deck.pop()
     battleCard1.push(cardPicked1)
-  }  else if(
-  wiz2Cards.length === 0){
-    return victory()
-  }
-  renderCompare()
+    console.log(battleCard1)
+    renderCompare()
+  console.log(`CARDPICKED1`, cardPicked1)
+
+  }  
+  // else if(
+  // wiz2Cards.length === 0){
+  //   return victory()
+  // }
 }
 
 function handleClick2() { 
   let battleCard2 = []
   if (wiz2Cards.length > 0){
-  let randomIndex = Math.floor(Math.random() * (wiz2Cards.length))
+  // let randomIndex = Math.floor(Math.random() * (wiz2Cards.length))
     let cardPicked2 = wiz2Cards.pop()
-      console.log(`CARDPICKED!`, cardPicked2)
-    battleCard2.push(cardPicked2)
+      console.log(`CARDPICKED2`, cardPicked2)
+    // battleCard2.push(cardPicked2)
   // render(cardPicked2)
   }
-  else if(
-    wiz2Cards.length === 0){
-      return victory()
-    }
+  // else if(
+  //   wiz2Cards.length === 0){
+  //     return victory()
+  //   }
   // render()
   renderCompare()
-}
-
-function render(){
-  // // console.log(cardPicked)
-  // if (wiz1Cards.length > 1){
-  //   battleCard1.classList.remove(cardToRemove)
-  // }
-  // battleCard1.classList.add(cardPicked)
-  // if (wiz1Cards.length >= 26) {
-  //   battleCard1.classList.add('shadow')
-  //   battleCard2.remove('shadow')
-  // }
-  // if (wiz2Cards.length >= 26) {
-  //   battleCard2.classList.add('shadow')
-  //   battleCard1.remove('shadow')
-  // }
-  // if (wiz2Cards.length === 0){
-  //   wiz2Cards.classList.add('outline')
-
-  // }
 }
 
 function renderCompare() {
@@ -129,7 +108,7 @@ function renderCompare() {
   }
   else if (cardValue1 > cardValue2){
     let (cardToRemove = cardPicked1 && cardPicked2)
-    wiz1Cards.push(cardToRemove)
+    deck.push(cardToRemove)
     message.textContent = `${wizard1} takes the advantage`
     tieBtn.setAttribute("hidden", true)
     gamePlay()
@@ -144,6 +123,21 @@ function renderCompare() {
 function tiePlay(){
   //** play two cards face down 
   //** play one card face up aka card picked 1 & 2   */
+}
+
+function victory(){
+if (deck.length === 0 && battleCard1.length === 0) {
+  return message.textContent `${wizard2} is the victor! ${wizard1} died bravely in battle.`
+}else if (wiz2cards.length === 0 && battleCard2.length === 0) {
+  return message.textContent = `${wizard1} is the victor! ${wizard2} died bravely in battle.`
+  }
+}
+
+///** decide on language for victory message */
+
+
+//***  TIE PLAY  */
+//extra
   // renderCompare()
 //   // hidden button appears?  
 //   // plays three cards, two face down, one up
@@ -157,17 +151,12 @@ function tiePlay(){
 
 //   return message.textContent = `Get up, dust yourself off. It's not over yet.`
 //   render()
-}
+// }
 
-function victory(){
-if (wiz1cards.length === 0 && battleCard1.length === 0) {
-  return message.textContent `${wizard2} is the victor! ${wizard1} died bravely in battle.`
-}else if (wiz2cards.length === 0 && battleCard2.length === 0) {
-  return message.textContent = `${wizard1} has defeated the Dementors! ${wizard2} died bravely in battle.`
-  }
-}
 
-///** decide on language for victory message */
+
+
+
 
 // function cardToRemove()
 
@@ -194,3 +183,31 @@ if (wiz1cards.length === 0 && battleCard1.length === 0) {
 //// function compare()
 // //function Tie
 // //function Victory
+
+
+// function gamePlay(){
+  // message.textContent = `Wands at the ready!`
+  // handleClick1()
+  // handleClick2()
+// }
+
+
+// function render(){
+  // console.log(cardPicked)
+  // if (wiz1Cards.length > 1){
+  //   battleCard1.classList.remove(cardToRemove)
+  // }
+  // battleCard1.classList.add(cardPicked)
+  // if (wiz1Cards.length >= 26) {
+  //   battleCard1.classList.add('shadow')
+  //   battleCard2.remove('shadow')
+  // }
+  // if (wiz2Cards.length >= 26) {
+  //   battleCard2.classList.add('shadow')
+  //   battleCard1.remove('shadow')
+  // }
+  // if (wiz2Cards.length === 0){
+  //   wiz2Cards.classList.add('outline')
+
+  // }
+// }
