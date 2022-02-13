@@ -53,8 +53,7 @@ function init(){
     wiz2Cards.push(deck)
     message.textContent = `Wands at the ready!`
   }
-  handleClick1()
-  handleClick2()
+  gamePlay()
 }
 
 console.log(cardsPicked)
@@ -62,6 +61,11 @@ console.log('OG DECK', deck)
 console.log('FIRST DECK', wiz1Cards)
 console.log('SECOND DECK', wiz2Cards)
 
+function gamePlay(){
+  message.textContent = `Wands at the ready!`
+  handleClick1()
+  handleClick2()
+}
 
 function handleClick1(event){
   let battleCard1 = []
@@ -123,18 +127,20 @@ function renderCompare() {
   if (cardValue2 > cardValue1){
     // console.log
     let (cardToRemove = cardPicked1 && cardPicked2)
-    return wiz2Cards.push(cardToRemove)
-    return message.textContent = `${wizard2} takes the advantage`
+    wiz2Cards.push(cardToRemove)
+    message.textContent = `${wizard2} takes the advantage`
     tieBtn.setAttribute("hidden", true)
+    gamePlay()
   }
   else if (cardValue1 > cardValue2){
     let (cardToRemove = cardPicked1 && cardPicked2)
-    return wiz1Cards.push(cardToRemove)
-    return message.textContent = `${wizard1} takes the advantage`
+    wiz1Cards.push(cardToRemove)
+    message.textContent = `${wizard1} takes the advantage`
     tieBtn.setAttribute("hidden", true)
+    gamePlay()
   }else if (cardValue1 === cardValue2) {
-    return message.textContent = `They parried your spell! Strike again!`
-    return tiePlay()
+    message.textContent = `They parried your spell! Strike again!`
+    tiePlay()
   }
   // render()
 }
