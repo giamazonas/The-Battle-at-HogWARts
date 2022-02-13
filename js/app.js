@@ -15,8 +15,8 @@ let cardToRemove = []
 let battleCard1 = []
 let battleCard2 = []
 
-let battleCard1Dom = document.getElementById('deckBF1')
-let battleCard2Dom = document.getElementById('deckBF2')
+let battleCard1Dom = document.getElementById('deckBF1', cardPicked1)
+let battleCard2Dom = document.getElementById('deckBF2', cardPicked2)
 
 let wiz1CardsDom = document.getElementById('deck-start1')
 let wiz2CardsDom = document.getElementById('deck-start2')
@@ -83,7 +83,31 @@ console.log(`battleCard 2`, battleCard2)
 function render(){
   // gameStatus.textContent = message
   console.log(`render invoked`)
+  // let appendCard = document.createElement('div')
+  // appendCard.id = idx
+  
+  if (wiz1Cards.length >= 26) {
+    wiz1CardsDom.classList.add('shadow')
+  }
+  if (wiz2Cards.length >= 26) {
+    wiz1CardsDom.classList.add('shadow')
+  }
+
+  if (wiz1Cards.length < 26) {
+    wiz1CardsDom.classList.remove('shadow')
+  }
+  if (wiz2Cards.length < 26) {
+    wiz1CardsDom.classList.remove('shadow')
+  }
+
+  if (wiz1Cards.length === 0){
+    wiz2Cards.classList.add('outline')
+  }
+  if (wiz2Cards.length === 0){
+    wiz2Cards.classList.add('outline')
+  }
 }
+
 
 function renderCompare() {
   // turn = 
@@ -93,7 +117,7 @@ function renderCompare() {
     cardToRemove = (cardPicked1 && cardPicked2)
     wiz2Cards.push(cardToRemove)
     console.log(`2 wins`)
-    message.textContent = `${wizard2} takes the advantage`
+    message.textContent = `${wizard2} 2 takes the advantage`
     tieBtn.setAttribute("hidden", true)
     // gamePlay()
   }
@@ -101,7 +125,7 @@ function renderCompare() {
     cardToRemove = (cardPicked1 && cardPicked2)
     wiz1Cards.push(cardToRemove)
     console.log(`1 wins`)
-    message.textContent = `${wizard1} takes the advantage`
+    message.textContent = `${wizard1} 1 takes the advantage`
     tieBtn.setAttribute("hidden", true)
     // gamePlay()
   }else if (cardValue1 === cardValue2) {
@@ -193,23 +217,3 @@ if (deck.length === 0 && battleCard1.length === 0) {
   // handleClick2()
 // }
 
-
-// function render(){
-  // console.log(cardPicked)
-  // if (wiz1Cards.length > 1){
-  //   battleCard1.classList.remove(cardToRemove)
-  // }
-  // battleCard1.classList.add(cardPicked)
-  // if (wiz1Cards.length >= 26) {
-  //   battleCard1.classList.add('shadow')
-  //   battleCard2.remove('shadow')
-  // }
-  // if (wiz2Cards.length >= 26) {
-  //   battleCard2.classList.add('shadow')
-  //   battleCard1.remove('shadow')
-  // }
-  // if (wiz2Cards.length === 0){
-  //   wiz2Cards.classList.add('outline')
-
-  // }
-// }
