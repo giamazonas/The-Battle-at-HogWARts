@@ -26,12 +26,15 @@ let wandW2 = document.getElementById(btnW2)
 const tieBtn = document.querySelector('#tieBtn')
 const gameStatus = document.querySelector('#message')
 gameStatus.textContent = message
-
+const gameOverBtn = document.querySelector('#gameOverBtn')
 
 //** */  Event listeners
 document.getElementById('btnW1').addEventListener('click', handleClick1)
 document.getElementById('btnW2').addEventListener('click', handleClick2)
 tieBtn.addEventListener('click', tiePlay)
+
+// gameOverBtn.addEventListener('click', init)
+
 
 // handleClickWand (play card to battlefield), 
 // handleClickReplay(reset button)
@@ -47,10 +50,11 @@ function init(){
     let randomIndex = Math.floor(Math.random() * (deck.length))
     deck.sort(function(){
       return 0.5 - Math.random()})
-    let wiz2Cards = deck.splice(0, 26)
+    let wiz2Cards = deck.splice(0, 26).push
     // wiz1Cards.push(cardsPicked)
     // wiz2Cards.push(deck)
     message.textContent = `Wands at the ready!`
+    gameOverBtn.setAttribute('hidden', true)
   }
   // gamePlay()
 }
@@ -131,6 +135,7 @@ if (deck.length === 0 && battleCard1.length === 0) {
 }else if (wiz2cards.length === 0 && battleCard2.length === 0) {
   return message.textContent = `${wizard1} is the victor! ${wizard2} died bravely in battle.`
   }
+  // gameOverBtn.removeAttribute('hidden')
 }
 
 ///** decide on language for victory message */
