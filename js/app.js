@@ -87,10 +87,10 @@ function render(){
 
 function renderCompare() {
   // turn = 
-  const cardValue1 = keyValues[battleCard1]
-  const cardValue2 = keyValues[battleCard2]
+  const cardValue1 = keyValues[cardPicked1]
+  const cardValue2 = keyValues[cardPicked2]
   if (cardValue2 > cardValue1){
-    cardToRemove = (battleCard1 && battleCard2)
+    cardToRemove = (cardPicked1 && cardPicked2)
     wiz2Cards.push(cardToRemove)
     console.log(`2 wins`)
     message.textContent = `${wizard2} takes the advantage`
@@ -98,7 +98,7 @@ function renderCompare() {
     // gamePlay()
   }
   else if (cardValue1 > cardValue2){
-    cardToRemove = (battleCard1 && battleCard2)
+    cardToRemove = (cardPicked1 && cardPicked2)
     wiz1Cards.push(cardToRemove)
     console.log(`1 wins`)
     message.textContent = `${wizard1} takes the advantage`
