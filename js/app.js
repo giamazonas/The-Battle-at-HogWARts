@@ -32,15 +32,18 @@ gameStatus.textContent = message
 gameOverBtn.addEventListener('click', init)
 
 
-// console.log(btnW1)
-// console.log(btnW2)
-// console.log(tieBtn)
-// console.log(gameOverBtn)
-
 //** */ Functions
 
-init()
+// init()
 function init(){
+    message.textContent = `Wands at the ready!`
+    gameOverBtn.setAttribute('hidden', true)
+  console.log('init invoked')
+  shuffle()
+  render()
+}
+
+function shuffle(){
   if (deck.length > 0){
     let randomIndex = Math.floor(Math.random() * (deck.length))
     deck.sort(function(){
@@ -49,41 +52,44 @@ function init(){
     let wiz2Cards = deck.slice(26, 52)
     console.log(wiz1Cards)
     console.log(wiz2Cards)
-    message.textContent = `Wands at the ready!`
-    gameOverBtn.setAttribute('hidden', true)
-
-  // gamePlay()
   }
 }
 // console.log('OG DECK', deck)
 // console.log('FIRST DECK', wiz1Cards)
 // console.log('SECOND DECK', wiz2Cards)
 
+// function handleClick
 
 function handleClick1(){
   let battleCard1 = []
   if (deck.length > 0){
   // let randomIndex = Math.floor(Math.random() * (wiz1Cards.length))
   // console.log(wiz1Cards)
-  let cardPicked1 = deck.pop()
+  let cardPicked1 = wiz2Cards.pop()
     battleCard1.push(cardPicked1)
     console.log(battleCard1)
     renderCompare()
   console.log(`CARDPICKED1`, cardPicked1)
 
+
   }  
 }
 
-function handleClick2(event) { 
+function handleClick2() { 
   let battleCard2 = []
   if (wiz2Cards.length > 0){
   // let randomIndex = Math.floor(Math.random() * (wiz2Cards.length))
     let cardPicked2 = wiz2Cards.pop()
       console.log(`CARDPICKED2`, cardPicked2)
-    // battleCard2.push(cardPicked2)
+    battleCard2.push(cardPicked2)
   // render(cardPicked2)
   }
   renderCompare()
+}
+
+function render(){
+  gameStatus.textContent = message
+  console.log(`render invoked`)
 }
 
 function renderCompare() {
