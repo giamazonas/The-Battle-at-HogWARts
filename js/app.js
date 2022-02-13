@@ -9,7 +9,11 @@ let wizard1, wizard2
 let winner, battlefield, wand, endGame, cardsPicked, cardPicked1, cardPicked2, card
 
 //** */ Cached element references
-let wiz1Cards = [], wiz2Cards = [], cardToRemove = [], battleCard1 = [], battleCard2 = []
+let wiz1Cards = []
+let wiz2Cards = []
+let cardToRemove = []
+let battleCard1 = []
+let battleCard2 = []
 
 let battleCard1Dom = document.getElementById('deckBF1')
 let battleCard2Dom = document.getElementById('deckBF2')
@@ -63,22 +67,21 @@ function handleClick1(){
   }
   renderCompare()
 }
-console.log(battleCard1)
+console.log(`battleCard1`, battleCard1)
 
 
 function handleClick2() { 
   if (wiz2Cards.length > 0){
     cardPicked2 = wiz2Cards.pop()
-      console.log(`CARDPICKED2`, cardPicked2)
     battleCard2.push(cardPicked2)
   }
   renderCompare()
 }
-console.log(battleCard2)
+console.log(`battleCard 2`, battleCard2)
 
 
 function render(){
-  gameStatus.textContent = message
+  // gameStatus.textContent = message
   console.log(`render invoked`)
 }
 
@@ -89,16 +92,18 @@ function renderCompare() {
   if (cardValue2 > cardValue1){
     cardToRemove = (battleCard1 && battleCard2)
     wiz2Cards.push(cardToRemove)
+    console.log(`2 wins`)
     message.textContent = `${wizard2} takes the advantage`
     tieBtn.setAttribute("hidden", true)
-    gamePlay()
+    // gamePlay()
   }
   else if (cardValue1 > cardValue2){
     cardToRemove = (battleCard1 && battleCard2)
-    deck.push(cardToRemove)
+    wiz1Cards.push(cardToRemove)
+    console.log(`1 wins`)
     message.textContent = `${wizard1} takes the advantage`
     tieBtn.setAttribute("hidden", true)
-    gamePlay()
+    // gamePlay()
   }else if (cardValue1 === cardValue2) {
     message.textContent = `They parried your spell! Strike again!`
     tiePlay()
