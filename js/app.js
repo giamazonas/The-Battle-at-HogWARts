@@ -5,11 +5,12 @@ let keyValues = {
 const deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03","d02","hA","hQ","hK","hJ","h10","h09","h08","h07","h06","h05","h04","h03","h02","cA","cQ","cK","cJ","c10","c09","c08","c07","c06","c05","c04","c03","c02","sA","sQ","sK","sJ","s10","s09","s08","s07","s06","s05","s04","s03","s02"]
 
 //**  */  Declare deck variables
-let wizard1, wizard2
-let winner, cardsPicked, cardPicked1, cardPicked2, card
+
+let  cardsPicked, cardPicked1, cardPicked2, card, turn
 let wiz1Cards = []
 let wiz2Cards = []
-let cardToRemove = []
+let cardToRemove1 = []
+let cardToRemove2 = []
 let battleCard1 = []
 let battleCard2 = []
 
@@ -31,10 +32,9 @@ const gameOverBtn = document.querySelector('#gameOverBtn')
 
 document.getElementById('deck-start1').addEventListener('click', handleClick1)
 document.getElementById('deck-start2').addEventListener('click', handleClick2)
-tieBtn.addEventListener('click', tiePlay)
+// tieBtn.addEventListener('click', tiePlay)
 gameStatus.textContent = message
 gameOverBtn.addEventListener('click', init)
-
 
 //** */ Functions
 
@@ -42,7 +42,7 @@ init()
 function init(){
     message.textContent = `Wands at the ready!`
     gameOverBtn.setAttribute('hidden', true)
-  console.log('init invoked')
+  console.log('init invoked')   
   shuffle()
   // render()
 }
@@ -62,6 +62,10 @@ console.log('SECOND DECK', wiz2Cards)
 
 // function handleClick
 
+function nextTurn(){
+    // turn: (handleClick1()) && (handleClick2()) => {renderCompare}
+}
+
 function handleClick1(){
   if (wiz1Cards.length > 0){
     cardPicked1 = wiz1Cards.pop()
@@ -73,7 +77,6 @@ function handleClick1(){
 console.log(`battleCard1`, battleCard1)
 let appendCard1
 
-
 function handleClick2() { 
   if (wiz2Cards.length > 0){
     cardPicked2 = wiz2Cards.pop()
@@ -83,7 +86,6 @@ function handleClick2() {
   renderCompare()
 }
 console.log(`battleCard2`, battleCard2)
-
 
 function render(){
   // gameStatus.textContent = message
@@ -123,54 +125,65 @@ function renderCompare() {
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]
   if (cardValue2 > cardValue1){
-    cardToRemove = (cardPicked1 && cardPicked2)
-    wiz2Cards.push(cardToRemove)
+    // let cardToRemove = (cardPicked1 && cardPicked2)
+    // wiz2Cards.push(cardToRemove)\
+    removeCard()
     console.log(`2 wins`)
-    message.textContent = `${wizard2} 2 takes the advantage`
-    tieBtn.setAttribute("hidden", true)
+    message.textContent = `Draco Malfoy takes the advantage`
+    // tieBtn.setAttribute("hidden", true)
     // gamePlay()
   }
   else if (cardValue1 > cardValue2){
-    cardToRemove = (cardPicked1 && cardPicked2)
-    wiz1Cards.push(cardToRemove)
+    // cardToRemove = (cardPicked1 && cardPicked2)
+    // wiz1Cards.push(cardToRemove)
+    removeCard()
     console.log(`1 wins`)
-    message.textContent = `${wizard1} 1 takes the advantage`
-    tieBtn.setAttribute("hidden", true)
+    message.textContent = `Harry Potter takes the advantage`
+    // tieBtn.setAttribute("hidden", true)
     // gamePlay()
   }else if (cardValue1 === cardValue2) {
     message.textContent = `They parried your spell! Strike again!`
-    tiePlay()
+    // tiePlay()
   }
   render()
 }
+
+function removeCard(){
+  let cardToRemove2 = (cardPicked1 && cardPicked2)
+    wiz2Cards.push(cardToRemove)
+  let cardToRemove1 = (cardPicked1 && cardPicked2)
+    wiz1Cards.push(cardToRemove)
+  nextTurn()
+}
+
 // comment to add and check push functionality
 
-function tiePlay(){
-  //** play two cards face down 
-  //** play one card face up aka card picked 1 & 2   */
-  tiePlayCards1 = 
-  battleCard1.push(wiz1Cards.pop())
-  battleCard1.push(wiz1Cards.pop())
-  battleCard1.push(wiz1Cards.pop())
+// function tiePlay(){
+//   //** play two cards face down 
+//   //** play one card face up aka card picked 1 & 2   */
+//   tiePlayCards1 = 
+//   battleCard1.push(wiz1Cards.pop())
+//   battleCard1.push(wiz1Cards.pop())
+//   battleCard1.push(wiz1Cards.pop())
   
-  console.log(`tie`, tiePlayCards1)
+//   console.log(`tie`, tiePlayCards1)
 
-  tiePlayCards2 = 
-    battleCard1.push(wiz1Cards.pop())
-    battleCard1.push(wiz1Cards.pop())
-    battleCard1.push(wiz1Cards.pop())
+//   tiePlayCards2 = 
+//     battleCard1.push(wiz1Cards.pop())
+//     battleCard1.push(wiz1Cards.pop())
+//     battleCard1.push(wiz1Cards.pop())
     
-  console.log(`tie`, tiePlayCards2)
+//   console.log(`tie`, tiePlayCards2)
 
-  renderCompare()
-  }
+//   renderCompare()
+//   }
 
 
 function victory(){
 if (deck.length === 0 && battleCard1.length === 0) {
-  return message.textContent `${wizard2} is the victor! ${wizard1} died bravely in battle.`
+  return message.textContent `Draco Malfoy is the victor! Harry Potter died bravely in battle.`
   }else if (wiz2cards.length === 0 && battleCard2.length === 0) {
-  return message.textContent = `${wizard1} is the victor! ${wizard2} died bravely in battle.`
+  return message.textContent = `Harry Potter is the victor! Draco Malfoy died bravely in battle.`
   }
   gameOverBtn.removeAttribute('hidden')
 }
