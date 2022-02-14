@@ -141,41 +141,45 @@ function renderCompare() {
     wiz2Cards.push(cardToRemove)
     console.log(`Malfoy2 wins`)
     message.textContent = `Draco Malfoy takes the advantage`
-    battleCard2Dom.classList.remove(cardPicked1, cardPicked2)
+    setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 4000)
+    setTimeout(() => (battleCard1Dom.classList.remove(cardPicked1)), 4000)
   }
   else if (cardValue1 > cardValue2){
     cardToRemove = (cardPicked1 && cardPicked2)
     wiz1Cards.push(cardToRemove)
     console.log(`Potter1 wins`)
-    message.textContent = `Harry Potter takes the advantage`
-    battleCard1Dom.classList.remove(cardPicked1, cardPicked2)
-  }else if (cardValue1 === cardValue2) {
+    message.textContent = `Harry Potter takes the advantage` 
+    setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 4000)
+    setTimeout(() => (battleCard1Dom.classList.remove(cardPicked1)), 4000)
+  }
+  else if (cardValue1 === cardValue2) {
+    console.log('TIE')
     message.textContent = `They parried your spell! Strike again!`
     tiePlay()
   }    
   gameOverBtn.setAttribute("hidden", true)
-  render()
+  // render()
   victory()
 }
 
 function tiePlay(){
 //   //** play two cards face down 
 //   //** play one card face up aka card picked 1 & 2   */
-//   tiePlayCards1 = 
-//   battleCard1.push(wiz1Cards.pop())
-//   battleCard1.push(wiz1Cards.pop())
-//   battleCard1.push(wiz1Cards.pop())
+  // tiePlayCards1 = 
+  // battleCard1.push(wiz1Cards.pop())
+  // battleCard1.push(wiz1Cards.pop())
+  // battleCard1.push(wiz1Cards.pop())
   
-//   console.log(`tie`, tiePlayCards1)
+  // console.log(`tie`, tiePlayCards1)
 
-//   tiePlayCards2 = 
-//     battleCard1.push(wiz1Cards.pop())
-//     battleCard1.push(wiz1Cards.pop())
-//     battleCard1.push(wiz1Cards.pop())
+  // tiePlayCards2 = 
+  //   battleCard1.push(wiz1Cards.pop())
+  //   battleCard1.push(wiz1Cards.pop())
+  //   battleCard1.push(wiz1Cards.pop())
     
-//   console.log(`tie`, tiePlayCards2)
+  // console.log(`tie`, tiePlayCards2)
 
-//   renderCompare()
+  // renderCompare()
   }
 
 
