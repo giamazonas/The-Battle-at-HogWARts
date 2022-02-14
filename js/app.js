@@ -6,17 +6,18 @@ const deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03
 
 //**  */  Declare deck variables
 let wizard1, wizard2
-let winner, battlefield, wand, endGame, cardsPicked, cardPicked1, cardPicked2, card
-
-//** */ Cached element references
+let winner, cardsPicked, cardPicked1, cardPicked2, card
 let wiz1Cards = []
 let wiz2Cards = []
 let cardToRemove = []
 let battleCard1 = []
 let battleCard2 = []
 
-let battleCard1Dom = document.getElementById('deckBF1', cardPicked1)
-let battleCard2Dom = document.getElementById('deckBF2', cardPicked2)
+//** */ Cached element references
+
+let battleCard1Dom = document.getElementById('deckBF1')
+let battleCard2Dom = document.getElementById('deckBF2')
+let battlefield = document.querySelectorAll('.battlefield')
 
 let wiz1CardsDom = document.getElementById('deck-start1')
 let wiz2CardsDom = document.getElementById('deck-start2')
@@ -27,6 +28,7 @@ const gameStatus = document.querySelector('#message')
 const gameOverBtn = document.querySelector('#gameOverBtn')
 
 //** */  Event listeners
+
 document.getElementById('deck-start1').addEventListener('click', handleClick1)
 document.getElementById('deck-start2').addEventListener('click', handleClick2)
 tieBtn.addEventListener('click', tiePlay)
@@ -64,6 +66,7 @@ function handleClick1(){
   if (wiz1Cards.length > 0){
     cardPicked1 = wiz1Cards.pop()
     battleCard1.push(cardPicked1)
+    battleCard1Dom.style.backgroundColor = `red`
   }
   renderCompare()
 }
@@ -74,17 +77,16 @@ function handleClick2() {
   if (wiz2Cards.length > 0){
     cardPicked2 = wiz2Cards.pop()
     battleCard2.push(cardPicked2)
+    battleCard2Dom.style.backgroundColor = `red`
   }
   renderCompare()
 }
-console.log(`battleCard 2`, battleCard2)
+console.log(`battleCard2`, battleCard2)
 
 
 function render(){
   // gameStatus.textContent = message
   console.log(`render invoked`)
-  // let appendCard = document.createElement('div')
-  // appendCard.id = idx
   
   if (wiz1Cards.length >= 26) {
     wiz1CardsDom.classList.add('shadow')
@@ -105,6 +107,12 @@ function render(){
   }
   if (wiz2Cards.length === 0){
     wiz2Cards.classList.add('outline')
+  }
+  if (battleCard1.length > 1) {
+    battleCard1Dom.classList.add('shadow')
+  }
+  if (battleCard2.length > 1) {
+    battleCard2Dom.classList.add('shadow')
   }
 }
 
@@ -139,6 +147,27 @@ function renderCompare() {
 function tiePlay(){
   //** play two cards face down 
   //** play one card face up aka card picked 1 & 2   */
+  tiePlayCards1 = wiz1Cards.pop() * 3
+  battleCard1.push(tiePlayCards1)
+  console.log(`tie`, tiePlayCards1)
+
+  tiePlayCards2 = wiz2Cards.pop() * 3
+  battleCard2.push(tiePlayCards2)
+  console.log(`tie`, tiePlayCards2)
+  // let appendCard = document.createElement('div')
+  // appendCard.id = idx
+  renderCompare()
+  }
+
+
+
+
+
+
+
+
+
+
   // let appendCard1
   // let appendCard2
   // battleCard1.forEach(function(card, idx) {
@@ -149,7 +178,7 @@ function tiePlay(){
   //   appendCard = document.createElement('div')
   //   appendCard.id = idx 
   // })
-}
+
 
 function victory(){
 if (deck.length === 0 && battleCard1.length === 0) {
