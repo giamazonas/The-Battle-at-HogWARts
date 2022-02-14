@@ -39,13 +39,13 @@ gameOverBtn.addEventListener('click', init)
 
 init()
 function init(){
-    message.textContent = `Wands at the ready!`
-    gameOverBtn.setAttribute('hidden', true)
+  message.textContent = `Wands at the ready!`
+  gameOverBtn.setAttribute('hidden', true)
   console.log('init invoked')   
   cardPicked1 = null
   cardPicked2 = null
   shuffle()
-  // render()
+  render()
 }
 
 function shuffle(){
@@ -61,13 +61,6 @@ function shuffle(){
 console.log('FIRST DECK', wiz1Cards)
 console.log('SECOND DECK', wiz2Cards)
 
-// function nextTurn(event){
-//   turn = 1
-//   if (battleCard1 ===0 && battleCard2 === 0)
-//     handleClick1() 
-//     handleClick2()
-// }
-
 
 function handleClick1(){
   console.log(`handleClick1`)
@@ -77,8 +70,10 @@ function handleClick1(){
     console.log(cardPicked1)
     battleCard1.push(cardPicked1)
     // battleCard1Dom.style.backgroundColor = `red`
+    battleCard1Dom.classList.add(cardPicked1)
   }
   renderCompare()
+  gameOverBtn.setAttribute("hidden", true)
 }
 console.log(`battleCard1`, battleCard1)
 
@@ -88,15 +83,15 @@ function handleClick2() {
     cardPicked2 = wiz2Cards.pop()
     battleCard2.push(cardPicked2)
     // battleCard2Dom.style.backgroundColor = `red`
+    battleCard2Dom.classList.add(cardPicked2)
   }
   renderCompare()
+  gameOverBtn.setAttribute("hidden", true)
 }
 console.log(`battleCard2`, battleCard2)
 
 function render(){
   // gameStatus.textContent = message
-  battleCard1Dom.classList.add(cardPicked1)
-  battleCard2Dom.classList.add(cardPicked2)
   console.log(`render invoked`)
   if (battleCard1.length > 0){
     battleCard1Dom.classList.remove('back-red')
@@ -139,7 +134,6 @@ function render(){
 function renderCompare() {
   if (cardPicked1 === null || cardPicked2 === null) return
   console.log(cardPicked1, cardPicked2)
-  turn = 1
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]
   if (cardValue2 > cardValue1){
@@ -147,25 +141,24 @@ function renderCompare() {
     wiz2Cards.push(cardToRemove)
     console.log(`Malfoy2 wins`)
     message.textContent = `Draco Malfoy takes the advantage`
-    // nextTurn()
-    // tieBtn.setAttribute("hidden", true)
+    battleCard2Dom.classList.remove(cardPicked1, cardPicked2)
   }
   else if (cardValue1 > cardValue2){
     cardToRemove = (cardPicked1 && cardPicked2)
     wiz1Cards.push(cardToRemove)
     console.log(`Potter1 wins`)
     message.textContent = `Harry Potter takes the advantage`
-    // nextTurn()
-    // tieBtn.setAttribute("hidden", true)
+    battleCard1Dom.classList.remove(cardPicked1, cardPicked2)
   }else if (cardValue1 === cardValue2) {
     message.textContent = `They parried your spell! Strike again!`
-    // tiePlay()
-  }
+    tiePlay()
+  }    
+  gameOverBtn.setAttribute("hidden", true)
   render()
   victory()
 }
 
-// function tiePlay(){
+function tiePlay(){
 //   //** play two cards face down 
 //   //** play one card face up aka card picked 1 & 2   */
 //   tiePlayCards1 = 
@@ -183,7 +176,7 @@ function renderCompare() {
 //   console.log(`tie`, tiePlayCards2)
 
 //   renderCompare()
-//   }
+  }
 
 
 function victory(){
