@@ -1,0 +1,22 @@
+body {
+  cursor: url('<http://www.rw-designer.com/cursor-set/wand>'),auto,  !important;
+}
+h1 {
+
+}
+
+h3{
+
+}
+
+div .battlefield {
+  display: flex;
+  outline: blue;
+
+}
+
+div .gameOver {
+  display: flex;
+  outline: red;
+}
+
