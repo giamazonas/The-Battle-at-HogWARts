@@ -42,6 +42,8 @@ function init(){
     message.textContent = `Wands at the ready!`
     gameOverBtn.setAttribute('hidden', true)
   console.log('init invoked')   
+  cardPicked1 = null
+  cardPicked2 = null
   shuffle()
   // render()
 }
@@ -59,16 +61,20 @@ function shuffle(){
 console.log('FIRST DECK', wiz1Cards)
 console.log('SECOND DECK', wiz2Cards)
 
-function nextTurn(event){
-  turn = 1
-  if (battleCard1 ===0 && battleCard2 === 0)
-    handleClick1() 
-    handleClick2()
-}
+// function nextTurn(event){
+//   turn = 1
+//   if (battleCard1 ===0 && battleCard2 === 0)
+//     handleClick1() 
+//     handleClick2()
+// }
+
 
 function handleClick1(){
+  console.log(`handleClick1`)
   if (wiz1Cards.length > 0){
+
     cardPicked1 = wiz1Cards.pop()
+    console.log(cardPicked1)
     battleCard1.push(cardPicked1)
     // battleCard1Dom.style.backgroundColor = `red`
   }
@@ -77,6 +83,7 @@ function handleClick1(){
 console.log(`battleCard1`, battleCard1)
 
 function handleClick2() { 
+  console.log(`handleClick2`)
   if (wiz2Cards.length > 0){
     cardPicked2 = wiz2Cards.pop()
     battleCard2.push(cardPicked2)
@@ -128,6 +135,8 @@ function render(){
 }
 
 function renderCompare() {
+  if (cardPicked1 === null || cardPicked2 === null) return
+  console.log(cardPicked1, cardPicked2)
   turn = 1
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]
@@ -136,7 +145,7 @@ function renderCompare() {
     wiz2Cards.push(cardToRemove)
     console.log(`2 wins`)
     message.textContent = `Draco Malfoy takes the advantage`
-    nextTurn()
+    // nextTurn()
     // tieBtn.setAttribute("hidden", true)
   }
   else if (cardValue1 > cardValue2){
@@ -144,7 +153,7 @@ function renderCompare() {
     wiz1Cards.push(cardToRemove)
     console.log(`1 wins`)
     message.textContent = `Harry Potter takes the advantage`
-    nextTurn()
+    // nextTurn()
     // tieBtn.setAttribute("hidden", true)
   }else if (cardValue1 === cardValue2) {
     message.textContent = `They parried your spell! Strike again!`
