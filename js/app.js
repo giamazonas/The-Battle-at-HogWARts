@@ -9,8 +9,7 @@ const deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03
 let  cardsPicked, cardPicked1, cardPicked2, card, turn
 let wiz1Cards = []
 let wiz2Cards = []
-let cardToRemove1 = []
-let cardToRemove2 = []
+let cardToRemove = []
 let battleCard1 = []
 let battleCard2 = []
 
@@ -60,11 +59,11 @@ function shuffle(){
 console.log('FIRST DECK', wiz1Cards)
 console.log('SECOND DECK', wiz2Cards)
 
-// function handleClick
-
-function nextTurn(){
-  turn = 
-
+function nextTurn(event){
+  turn = 1
+  if (battleCard1 ===0 && battleCard2 === 0)
+    handleClick1() 
+    handleClick2()
 }
 
 function handleClick1(){
@@ -76,7 +75,6 @@ function handleClick1(){
   renderCompare()
 }
 console.log(`battleCard1`, battleCard1)
-let appendCard1
 
 function handleClick2() { 
   if (wiz2Cards.length > 0){
@@ -101,27 +99,25 @@ function render(){
     wiz1CardsDom.classList.add('shadow')
   }
   if (wiz2Cards.length >= 26) {
-    wiz1CardsDom.classList.add('shadow')
+    wiz2CardsDom.classList.add('shadow')
   }
-
   if (wiz1Cards.length < 26) {
     wiz1CardsDom.classList.remove('shadow')
   }
   if (wiz2Cards.length < 26) {
-    wiz1CardsDom.classList.remove('shadow')
+    wiz2CardsDom.classList.remove('shadow')
   }
   if (wiz1Cards.length === 0){
     wiz1Cards.classList.add('outline')
   }
   if (wiz2Cards.length === 0){
     wiz2Cards.classList.add('outline')
-
+  }
   if (battleCard1.length === 0){
     battleCard1Dom.classList.add('outline')
   }
   if (battleCard2.length === 0){
-    battleCard2.classList.add('outline')
-  }
+    battleCard2Dom.classList.add('outline')
   }
   if (battleCard1.length > 1) {
     battleCard1Dom.classList.add('shadow')
@@ -131,44 +127,32 @@ function render(){
   }
 }
 
-
 function renderCompare() {
-  // turn = 
+  turn = 1
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]
   if (cardValue2 > cardValue1){
-    // let cardToRemove = (cardPicked1 && cardPicked2)
-    // wiz2Cards.push(cardToRemove)\
-    removeCard()
+    let cardToRemove = (cardPicked1 && cardPicked2)
+    wiz2Cards.push(cardToRemove)
     console.log(`2 wins`)
     message.textContent = `Draco Malfoy takes the advantage`
+    nextTurn()
     // tieBtn.setAttribute("hidden", true)
-    // gamePlay()
   }
   else if (cardValue1 > cardValue2){
-    // cardToRemove = (cardPicked1 && cardPicked2)
-    // wiz1Cards.push(cardToRemove)
-    removeCard()
+    cardToRemove = (cardPicked1 && cardPicked2)
+    wiz1Cards.push(cardToRemove)
     console.log(`1 wins`)
     message.textContent = `Harry Potter takes the advantage`
+    nextTurn()
     // tieBtn.setAttribute("hidden", true)
-    // gamePlay()
   }else if (cardValue1 === cardValue2) {
     message.textContent = `They parried your spell! Strike again!`
     // tiePlay()
   }
   render()
+  victory()
 }
-
-function removeCard(){
-  let cardToRemove2 = (cardPicked1 && cardPicked2)
-    wiz2Cards.push(cardToRemove2)
-  let cardToRemove1 = (cardPicked1 && cardPicked2)
-    wiz1Cards.push(cardToRemove1)
-  nextTurn()
-}
-
-// comment to add and check push functionality
 
 // function tiePlay(){
 //   //** play two cards face down 
@@ -192,9 +176,10 @@ function removeCard(){
 
 
 function victory(){
-if (deck.length === 0 && battleCard1.length === 0) {
+  if (wiz1Cards.length === 0 && battleCard1.length === 0) {
   return message.textContent `Draco Malfoy is the victor! Harry Potter died bravely in battle.`
-  }else if (wiz2cards.length === 0 && battleCard2.length === 0) {
+  }
+  else if (wiz2Cards.length === 0 && battleCard2.length === 0) {
   return message.textContent = `Harry Potter is the victor! Draco Malfoy died bravely in battle.`
   }
   gameOverBtn.removeAttribute('hidden')
