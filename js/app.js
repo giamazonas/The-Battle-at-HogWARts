@@ -63,14 +63,15 @@ console.log('SECOND DECK', wiz2Cards)
 // function handleClick
 
 function nextTurn(){
-    // turn: (handleClick1()) && (handleClick2()) => {renderCompare}
+  turn = 
+
 }
 
 function handleClick1(){
   if (wiz1Cards.length > 0){
     cardPicked1 = wiz1Cards.pop()
     battleCard1.push(cardPicked1)
-    battleCard1Dom.style.backgroundColor = `red`
+    // battleCard1Dom.style.backgroundColor = `red`
   }
   renderCompare()
 }
@@ -81,7 +82,7 @@ function handleClick2() {
   if (wiz2Cards.length > 0){
     cardPicked2 = wiz2Cards.pop()
     battleCard2.push(cardPicked2)
-    battleCard2Dom.style.backgroundColor = `red`
+    // battleCard2Dom.style.backgroundColor = `red`
   }
   renderCompare()
 }
@@ -90,7 +91,12 @@ console.log(`battleCard2`, battleCard2)
 function render(){
   // gameStatus.textContent = message
   console.log(`render invoked`)
-  
+  if (battleCard1.length > 0){
+    battleCard1Dom.classList.remove('back-red')
+  }
+  if (battleCard2.length > 0){
+    battleCard2Dom.classList.remove('back-red')
+  }
   if (wiz1Cards.length >= 26) {
     wiz1CardsDom.classList.add('shadow')
   }
@@ -104,12 +110,18 @@ function render(){
   if (wiz2Cards.length < 26) {
     wiz1CardsDom.classList.remove('shadow')
   }
-
   if (wiz1Cards.length === 0){
-    wiz2Cards.classList.add('outline')
+    wiz1Cards.classList.add('outline')
   }
   if (wiz2Cards.length === 0){
     wiz2Cards.classList.add('outline')
+
+  if (battleCard1.length === 0){
+    battleCard1Dom.classList.add('outline')
+  }
+  if (battleCard2.length === 0){
+    battleCard2.classList.add('outline')
+  }
   }
   if (battleCard1.length > 1) {
     battleCard1Dom.classList.add('shadow')
@@ -150,9 +162,9 @@ function renderCompare() {
 
 function removeCard(){
   let cardToRemove2 = (cardPicked1 && cardPicked2)
-    wiz2Cards.push(cardToRemove)
+    wiz2Cards.push(cardToRemove2)
   let cardToRemove1 = (cardPicked1 && cardPicked2)
-    wiz1Cards.push(cardToRemove)
+    wiz1Cards.push(cardToRemove1)
   nextTurn()
 }
 
