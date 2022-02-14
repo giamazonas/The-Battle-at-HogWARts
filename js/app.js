@@ -95,6 +95,8 @@ console.log(`battleCard2`, battleCard2)
 
 function render(){
   // gameStatus.textContent = message
+  battleCard1Dom.classList.add(cardPicked1)
+  battleCard2Dom.classList.add(cardPicked2)
   console.log(`render invoked`)
   if (battleCard1.length > 0){
     battleCard1Dom.classList.remove('back-red')
@@ -143,7 +145,7 @@ function renderCompare() {
   if (cardValue2 > cardValue1){
     let cardToRemove = (cardPicked1 && cardPicked2)
     wiz2Cards.push(cardToRemove)
-    console.log(`2 wins`)
+    console.log(`Malfoy2 wins`)
     message.textContent = `Draco Malfoy takes the advantage`
     // nextTurn()
     // tieBtn.setAttribute("hidden", true)
@@ -151,7 +153,7 @@ function renderCompare() {
   else if (cardValue1 > cardValue2){
     cardToRemove = (cardPicked1 && cardPicked2)
     wiz1Cards.push(cardToRemove)
-    console.log(`1 wins`)
+    console.log(`Potter1 wins`)
     message.textContent = `Harry Potter takes the advantage`
     // nextTurn()
     // tieBtn.setAttribute("hidden", true)
