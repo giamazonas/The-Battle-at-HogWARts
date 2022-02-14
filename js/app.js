@@ -71,7 +71,17 @@ function handleClick1(){
   renderCompare()
 }
 console.log(`battleCard1`, battleCard1)
+let appendCard1
 
+  // let appendCard2
+  // battleCard1.forEach(function(card, idx) {
+  //   appendCard = document.createElement('div')
+  //   appendCard.id = idx 
+  // })
+  // battleCard2.forEach(function(card, idx) {
+  //   appendCard = document.createElement('div')
+  //   appendCard.id = idx 
+  // })
 
 function handleClick2() { 
   if (wiz2Cards.length > 0){
@@ -160,26 +170,6 @@ function tiePlay(){
   }
 
 
-
-
-
-
-
-
-
-
-  // let appendCard1
-  // let appendCard2
-  // battleCard1.forEach(function(card, idx) {
-  //   appendCard = document.createElement('div')
-  //   appendCard.id = idx 
-  // })
-  // battleCard2.forEach(function(card, idx) {
-  //   appendCard = document.createElement('div')
-  //   appendCard.id = idx 
-  // })
-
-
 function victory(){
 if (deck.length === 0 && battleCard1.length === 0) {
   return message.textContent `${wizard2} is the victor! ${wizard1} died bravely in battle.`
@@ -188,61 +178,4 @@ if (deck.length === 0 && battleCard1.length === 0) {
   }
   gameOverBtn.removeAttribute('hidden')
 }
-
-
-//***  TIE PLAY  */
-
-//extra
-  // renderCompare()
-//   // hidden button appears?  
-//   // plays three cards, two face down, one up
-//   // renderCompare()
-//   tieBtn.removeAttribute("hidden")
-
-//   // tie button appears, message Book of Spells (property of the half-blood prince)
-//   // tie button plays three cards???  
-//   battleCard1.push(cardPicked1)
-//   battleCard2.push(cardPicked2)
-
-//   return message.textContent = `Get up, dust yourself off. It's not over yet.`
-//   render()
-// }
-
-
-
-
-
-
-// function cardToRemove()
-
-// function cardPicked1(){
-//   // randomly select from card in their own pile
-  // renderCompare() 
-//   //assign card with random index to a variable
-//   //add card picked to battleCard area
-//   //pass card to renderCompare function to display
-// }
-// function cardPicked2(){
-//   // randomly select from card in their own pile
-//   renderCompare() 
-//   //assign card with random index to a variable
-//   //add card picked to battleCard area
-//   //pass card to renderCompare function to display
-// }
-
-//// function init()
-// function gameState
-// function checkCardsValue()
-// function render()
-// function winner()
-//// function compare()
-// //function Tie
-// //function Victory
-
-
-// function gamePlay(){
-  // message.textContent = `Wands at the ready!`
-  // handleClick1()
-  // handleClick2()
-// }
 
