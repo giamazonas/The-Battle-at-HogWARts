@@ -73,15 +73,6 @@ function handleClick1(){
 console.log(`battleCard1`, battleCard1)
 let appendCard1
 
-  // let appendCard2
-  // battleCard1.forEach(function(card, idx) {
-  //   appendCard = document.createElement('div')
-  //   appendCard.id = idx 
-  // })
-  // battleCard2.forEach(function(card, idx) {
-  //   appendCard = document.createElement('div')
-  //   appendCard.id = idx 
-  // })
 
 function handleClick2() { 
   if (wiz2Cards.length > 0){
@@ -157,15 +148,20 @@ function renderCompare() {
 function tiePlay(){
   //** play two cards face down 
   //** play one card face up aka card picked 1 & 2   */
-  tiePlayCards1 = wiz1Cards.pop() * 3
-  battleCard1.push(tiePlayCards1)
+  tiePlayCards1 = 
+  battleCard1.push(wiz1Cards.pop())
+  battleCard1.push(wiz1Cards.pop())
+  battleCard1.push(wiz1Cards.pop())
+  
   console.log(`tie`, tiePlayCards1)
 
-  tiePlayCards2 = wiz2Cards.pop() * 3
-  battleCard2.push(tiePlayCards2)
+  tiePlayCards2 = 
+    battleCard1.push(wiz1Cards.pop())
+    battleCard1.push(wiz1Cards.pop())
+    battleCard1.push(wiz1Cards.pop())
+    
   console.log(`tie`, tiePlayCards2)
-  // let appendCard = document.createElement('div')
-  // appendCard.id = idx
+
   renderCompare()
   }
 
