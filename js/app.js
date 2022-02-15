@@ -176,7 +176,7 @@ function tiePlay(){
 
   let tiePlayCards2 = wiz2Cards.slice(-2)
   battleCard2.push(tiePlayCards2)
-  let cardPicked2 = wiz2Cards.pop()t
+  let cardPicked2 = wiz2Cards.pop()
   battleCard2.push(cardPicked2)
   console.log(`tieplaycards 1`, tiePlayCards2)
   console.log(`cardPicked2`, cardPicked2)
