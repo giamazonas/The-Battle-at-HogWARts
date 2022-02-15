@@ -93,53 +93,48 @@ function handleClick2() {
 }
 
 function renderCompare() {
-
   if (cardPicked1 === null || cardPicked2 === null) return
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]
   console.log(`first cardPicked1`, cardPicked1)
   console.log(`first cardPicked2`, cardPicked2)
   if (cardValue2 > cardValue1){
-    // console.log('win2cards', wiz2Cards)
     wiz2Cards = [...battleCard1,...battleCard2,...wiz2Cards]
-    // console.log('win2cards', wiz2Cards)
     battleCard1 = []
     battleCard2 = []
     message.textContent = `Draco Malfoy takes the advantage`
     setTimeout(() => {
-      battleCard1Dom.classList.remove(cardPicked1)
-      battleCard2Dom.classList.remove(cardPicked2)
-      cardPicked1 = null
-      cardPicked2 = null
-      }, 2000)
+      clearBoard()
+    }, 2000)
   }
   else if (cardValue1 > cardValue2){
-    // console.log('wiz1cards', wiz1Cards)
     wiz1Cards = [...battleCard1,...battleCard2,...wiz1Cards]
-    // console.log('wiz1cards', wiz1Cards)
-  
     battleCard1 = []
     battleCard2 = []
     message.textContent = `Harry Potter takes the advantage` 
     setTimeout(() => {
-      battleCard1Dom.classList.remove(cardPicked1)
-      battleCard2Dom.classList.remove(cardPicked2)
-      cardPicked1 = null
-      cardPicked2 = null
+      clearBoard()
       }, 2000)
     // setTimeout(() => (console.log(`hello`)), 2000)
   }
   else if (cardValue1 === cardValue2) {
     console.log('TIE happens', cardPicked2)
     message.textContent = `They parried your spell! Strike again!`
-    cardPicked1 = null
-    cardPicked2 = null
-    tiePlay()
+    setTimeout(() => {
+      clearBoard()
+      tiePlay()
+    }, 1000)
   }    
   console.log(`TIE`, wiz1Cards, wiz2Cards)
   gameOverBtn.setAttribute("hidden", true)
   // render()
   victory()
+}
+function clearBoard() {
+    battleCard1Dom.classList.remove(cardPicked1)
+    battleCard2Dom.classList.remove(cardPicked2)
+    cardPicked1 = null
+    cardPicked2 = null
 }
 
 function tiePlay(){
@@ -159,6 +154,8 @@ function tiePlay(){
   console.log(`tieplaycards 1`, tiePlayCards2)
   console.log(`cardPicked2`, cardPicked2)
 console.log(`compare should start again`)
+battleCard1Dom.classList.add(cardPicked1)
+battleCard2Dom.classList.add(cardPicked2)
   renderCompare()
   }
 
