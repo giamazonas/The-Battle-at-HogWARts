@@ -1,5 +1,11 @@
 html {
-  box-sizing: border-box
+  box-sizing: border-box;
+  /* background: url("./assets/castle-fire.jpeg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; */
+
 }
 *, 
 *::before, 
@@ -18,7 +24,10 @@ body {
   font-family: 'PT Serif', serif;
   /* align-items: center; */
   justify-content: center;
+  background-image: url("../assets/castle-fire.jpeg");
+  background-color: #cccccc; 
 }
+
 h1 {
   align-items: center;
   background-color: brown;
@@ -28,13 +37,17 @@ h1 {
   justify-content: center;
 }
 
-body > h3:last-child{
-align-items: center;
-background-color: blue;
-margin-left: auto;
+/* body > h3:last-child{ */
+
+/* } */
+
+div.battle {
+  align-items: center; 
+  justify-content: center;
+  -ms-flex-align: center;
 }
-.gameOver {
-  align-self: center;
+div.players {
+
 }
 
 .battlefield {
@@ -49,9 +62,13 @@ margin-left: auto;
   /* flex: 200px; */
 }
 
+.hidden-buttons {
+  text: black;
+}
+/* 
 #deckBF1 {
   flex: 1 auto;
-  flex-direction: wrap; 
+
 }
 #deckBF2 {
   flex: 1 auto;
@@ -64,11 +81,14 @@ flex-direction: flex-end;
 #deck-start2 {
   flex: 2 auto;
   flex-direction: flex-end;
-}
+} */
 
 .gameOver {
   display: flex;
-  background-color: red;
+  justify-content: center;
+  text: gold;
+  text-shadow: white, 30px;
+  /* background-color: red; */
 }
 
 
@@ -84,6 +104,6 @@ flex-direction: flex-end;
     "status name"
     "img occupation"
     "img brand"
-    "contact offer"; */ */
+    "contact offer"; */ 
   }
 }

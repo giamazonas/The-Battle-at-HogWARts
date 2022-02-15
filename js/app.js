@@ -60,8 +60,8 @@ function shuffle(){
   }
 }
 // console.log('OG DECK', deck)
-console.log('FIRST DECK', wiz1Cards)
-console.log('SECOND DECK', wiz2Cards)
+// console.log('FIRST DECK', wiz1Cards)
+// console.log('SECOND DECK', wiz2Cards)
 
 function handleClick1() {
   // console.log(`handleClick1`)
@@ -99,6 +99,7 @@ function renderCompare() {
   console.log(`first cardPicked2`, cardPicked2)
   if (cardValue2 > cardValue1){
     let loseCard = battleCard1.pop()
+    console.log(`lose card`, loseCard)
     wiz2Cards.push(loseCard)    
     let winCard = battleCard2.pop()
     wiz2Cards.push(winCard)
