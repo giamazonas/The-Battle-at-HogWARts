@@ -6,7 +6,7 @@ const deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03
 
 //**  */  Declare deck variables
 
-let  cardsPicked, cardPicked1, cardPicked2, card, turn
+let cardsPicked, cardPicked1, cardPicked2, card, turn
 let wiz1Cards = []
 let wiz2Cards = []
 let cardToRemove = []
@@ -27,23 +27,20 @@ const tieBtn = document.querySelector('#tieBtn')
 const gameStatus = document.querySelector('#message')
 const gameOverBtn = document.querySelector('#gameOverBtn')
 
-// document.body.style.cursor
-
 //** */  Event listeners
 
 document.getElementById('deck-start1').addEventListener('click', handleClick1)
 document.getElementById('deck-start2').addEventListener('click', handleClick2)
-// tieBtn.addEventListener('click', tiePlay)
 gameStatus.textContent = message
 gameOverBtn.addEventListener('click', init)
 
 //** */ Functions
 
 init()
+
 function init(){
   message.textContent = `Wands at the ready!`
-  gameOverBtn.setAttribute('hidden', true)
-  // console.log('init invoked')   
+  gameOverBtn.setAttribute('hidden', true) 
   cardPicked1 = null
   cardPicked2 = null
   shuffle()
@@ -54,38 +51,27 @@ function shuffle(){
   if (deck.length > 0){
     let randomIndex = Math.floor(Math.random() * (deck.length))
     deck.sort(function(){
-      return 0.5 - Math.random()})
+      return 0.5 - Math.random()
+    })
     wiz1Cards = deck.slice(0, 26)
     wiz2Cards = deck.slice(26, 52)
   }
 }
-// console.log('OG DECK', deck)
-console.log('FIRST DECK', wiz1Cards)
-console.log('SECOND DECK', wiz2Cards)
 
 function handleClick1() {
-  // console.log(`handleClick1`)
   if (wiz1Cards.length > 0){
-    // console.log('wiz1Cars', wiz1Cards)
     cardPicked1 = wiz1Cards.pop()
-    console.log('cardpickd1', cardPicked1)
     battleCard1.push(cardPicked1)
-    console.log(`battleCard1`, battleCard1)
     battleCard1Dom.classList.add(cardPicked1)
   }
-
   renderCompare()
   gameOverBtn.setAttribute("hidden", true)
 }
 
-function handleClick2() { 
-  // console.log(`handleClick2`) 
+function handleClick2() {  
   if (wiz2Cards.length > 0){
-    // console.log('wiz2Cars', wiz2Cards)
     cardPicked2 = wiz2Cards.pop()
-    console.log(`cardPicked2`, cardPicked2)
     battleCard2.push(cardPicked2)
-    console.log(`battleCard2`, battleCard2)
     battleCard2Dom.classList.add(cardPicked2)
   }
   renderCompare()
@@ -96,8 +82,6 @@ function renderCompare() {
   if (cardPicked1 === null || cardPicked2 === null) return
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]
-  console.log(`first cardPicked1`, cardPicked1)
-  console.log(`first cardPicked2`, cardPicked2)
   if (cardValue2 > cardValue1){
     wiz2Cards = [...battleCard1,...battleCard2,...wiz2Cards]
     battleCard1 = []
@@ -114,85 +98,71 @@ function renderCompare() {
     message.textContent = `Harry Potter takes the advantage` 
     setTimeout(() => {
       clearBoard()
-      }, 2000)
-    // setTimeout(() => (console.log(`hello`)), 2000)
+    }, 2000)
   }
   else if (cardValue1 === cardValue2) {
-    console.log('TIE happens', cardPicked2)
     message.textContent = `They parried your spell! Strike again!`
     setTimeout(() => {
       clearBoard()
       tiePlay()
     }, 1000)
   }    
-  console.log(`TIE`, wiz1Cards, wiz2Cards)
   gameOverBtn.setAttribute("hidden", true)
-  // render()
+  render()
   victory()
 }
+
 function clearBoard() {
-    battleCard1Dom.classList.remove(cardPicked1)
-    battleCard2Dom.classList.remove(cardPicked2)
-    cardPicked1 = null
-    cardPicked2 = null
+  battleCard1Dom.classList.remove(cardPicked1)
+  battleCard2Dom.classList.remove(cardPicked2)
+  cardPicked1 = null
+  cardPicked2 = null
 }
 
 function tiePlay(){
-  // console.log(cardPicked1, cardPicked2)
-
   let tiePlayCards1 = wiz1Cards.splice(-2, 2)
   battleCard1 = [...tiePlayCards1,...battleCard1]
   cardPicked1 = wiz1Cards.pop()
   battleCard1.push(cardPicked1)
-  console.log(`tieplaycards 1`, tiePlayCards1)
-  // console.log(`cardPicked2`, cardPicked2)
-
   let tiePlayCards2 = wiz2Cards.splice(-2, 2)
   battleCard2 = [...tiePlayCards2,...battleCard2]
   cardPicked2 = wiz2Cards.pop()
   battleCard2.push(cardPicked2)
-  console.log(`tieplaycards 1`, tiePlayCards2)
-  console.log(`cardPicked2`, cardPicked2)
-console.log(`compare should start again`)
-battleCard1Dom.classList.add(cardPicked1)
-battleCard2Dom.classList.add(cardPicked2)
+  battleCard1Dom.classList.add(cardPicked1)
+  battleCard2Dom.classList.add(cardPicked2)
   renderCompare()
-  }
+}
 
-  function render(){
-    if (battleCard1.length > 0){
-      battleCard1Dom.classList.remove('back-red')
-    }if (battleCard2.length > 0){
-      battleCard2Dom.classList.remove('back-red')
-    }if (wiz1Cards.length >= 26) {
-      wiz1CardsDom.classList.add('shadow')
-    }if (wiz2Cards.length >= 26) {
-      wiz2CardsDom.classList.add('shadow')
-    }if (wiz1Cards.length < 26) {
-      wiz1CardsDom.classList.remove('shadow')
-    }if (wiz2Cards.length < 26) {
-      wiz2CardsDom.classList.remove('shadow')
-    }if (wiz1Cards.length === 0){
-      wiz1Cards.classList.add('outline')
-    }if (wiz2Cards.length === 0){
-      wiz2Cards.classList.add('outline')
-    }if (battleCard1.length === 0){
-      battleCard1Dom.classList.add('outline')
-    }if (battleCard2.length === 0){
-      battleCard2Dom.classList.add('outline')
-    }if (battleCard1.length > 1) {
-      battleCard1Dom.classList.add('shadow')
-    }if (battleCard2.length > 1) {
-      battleCard2Dom.classList.add('shadow')
-    }
+function render(){
+  if (wiz1Cards.length >= 26) {
+    wiz1CardsDom.classList.add('shadow')
+  }if (wiz2Cards.length >= 26) {
+    wiz2CardsDom.classList.add('shadow')
+  }if (wiz1Cards.length < 26) {
+    wiz1CardsDom.classList.remove('shadow')
+  }if (wiz2Cards.length < 26) {
+    wiz2CardsDom.classList.remove('shadow')
+  }if (wiz1Cards.length === 0){
+    wiz1Cards.classList.add('outline')
+  }if (wiz2Cards.length === 0){
+    wiz2Cards.classList.add('outline')
+  }if (battleCard1.length === 0){
+    battleCard1Dom.classList.add('outline')
+  }if (battleCard2.length === 0){
+    battleCard2Dom.classList.add('outline')
+  }if (battleCard1.length > 1) {
+    battleCard1Dom.classList.add('shadow')
+  }if (battleCard2.length > 1) {
+    battleCard2Dom.classList.add('shadow')
   }
+}
 
 function victory(){
   if (wiz1Cards.length === 0 && battleCard1.length === 0) {
-  return message.textContent `Draco Malfoy is the victor! Harry Potter died bravely in battle.`
+    return message.textContent `Draco Malfoy is the victor! Harry Potter died bravely in battle.`
   }
   else if (wiz2Cards.length === 0 && battleCard2.length === 0) {
-  return message.textContent = `Harry Potter is the victor! Draco Malfoy died bravely in battle.`
+    return message.textContent = `Harry Potter is the victor! Draco Malfoy died bravely in battle.`
   }
   gameOverBtn.removeAttribute('hidden')
 }
