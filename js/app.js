@@ -58,9 +58,8 @@ function shuffle(){
   }
 }
 // console.log('OG DECK', deck)
-// console.log('FIRST DECK', wiz1Cards)
-// console.log('SECOND DECK', wiz2Cards)
-
+console.log('FIRST DECK', wiz1Cards)
+console.log('SECOND DECK', wiz2Cards)
 
 function handleClick1() {
   // console.log(`handleClick1`)
@@ -69,13 +68,12 @@ function handleClick1() {
     cardPicked1 = wiz1Cards.pop()
     console.log('cardpickd1', cardPicked1)
     battleCard1.push(cardPicked1)
-    // console.log(`battleCard1`, battleCard1)
+    console.log(`battleCard1`, battleCard1)
     battleCard1Dom.classList.add(cardPicked1)
   }
   renderCompare()
   gameOverBtn.setAttribute("hidden", true)
 }
-
 
 function handleClick2() { 
   // console.log(`handleClick2`) 
@@ -84,50 +82,11 @@ function handleClick2() {
     cardPicked2 = wiz2Cards.pop()
     console.log(`cardPicked2`, cardPicked2)
     battleCard2.push(cardPicked2)
-    // console.log(`battleCard2`, battleCard2)
+    console.log(`battleCard2`, battleCard2)
     battleCard2Dom.classList.add(cardPicked2)
   }
   renderCompare()
   gameOverBtn.setAttribute("hidden", true)
-}
-
-function render(){
-  if (battleCard1.length > 0){
-    battleCard1Dom.classList.remove('back-red')
-  }
-  if (battleCard2.length > 0){
-    battleCard2Dom.classList.remove('back-red')
-  }
-  if (wiz1Cards.length >= 26) {
-    wiz1CardsDom.classList.add('shadow')
-  }
-  if (wiz2Cards.length >= 26) {
-    wiz2CardsDom.classList.add('shadow')
-  }
-  if (wiz1Cards.length < 26) {
-    wiz1CardsDom.classList.remove('shadow')
-  }
-  if (wiz2Cards.length < 26) {
-    wiz2CardsDom.classList.remove('shadow')
-  }
-  if (wiz1Cards.length === 0){
-    wiz1Cards.classList.add('outline')
-  }
-  if (wiz2Cards.length === 0){
-    wiz2Cards.classList.add('outline')
-  }
-  if (battleCard1.length === 0){
-    battleCard1Dom.classList.add('outline')
-  }
-  if (battleCard2.length === 0){
-    battleCard2Dom.classList.add('outline')
-  }
-  if (battleCard1.length > 1) {
-    battleCard1Dom.classList.add('shadow')
-  }
-  if (battleCard2.length > 1) {
-    battleCard2Dom.classList.add('shadow')
-  }
 }
 
 function renderCompare() {
@@ -144,7 +103,6 @@ function renderCompare() {
     message.textContent = `Draco Malfoy takes the advantage`
     setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 2000)
     setTimeout(() => (battleCard1Dom.classList.remove(cardPicked1)), 2000)
-
   }
   else if (cardValue1 > cardValue2){
     let loseCard = battleCard2.pop()
@@ -154,10 +112,9 @@ function renderCompare() {
     message.textContent = `Harry Potter takes the advantage` 
     setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 2000)
     setTimeout(() => (battleCard1Dom.classList.remove(cardPicked1)), 2000)
-
   }
   else if (cardValue1 === cardValue2) {
-    console.log('TIE')
+    console.log('TIE happens')
     message.textContent = `They parried your spell! Strike again!`
     tiePlay()
   }    
@@ -172,7 +129,7 @@ function tiePlay(){
   let cardsPicked1 = wiz1Cards.pop()
   battleCard1.push(cardsPicked1)
   console.log(`tieplaycards 1`, tiePlayCards1)
-  console.log(`cardPicked2`, cardPicked2)
+  // console.log(`cardPicked2`, cardPicked2)
 
   let tiePlayCards2 = wiz2Cards.slice(-2)
   battleCard2.push(tiePlayCards2)
@@ -180,10 +137,37 @@ function tiePlay(){
   battleCard2.push(cardPicked2)
   console.log(`tieplaycards 1`, tiePlayCards2)
   console.log(`cardPicked2`, cardPicked2)
-
+console.log(`compare should start again`)
   // renderCompare()
   }
 
+  function render(){
+    if (battleCard1.length > 0){
+      battleCard1Dom.classList.remove('back-red')
+    }if (battleCard2.length > 0){
+      battleCard2Dom.classList.remove('back-red')
+    }if (wiz1Cards.length >= 26) {
+      wiz1CardsDom.classList.add('shadow')
+    }if (wiz2Cards.length >= 26) {
+      wiz2CardsDom.classList.add('shadow')
+    }if (wiz1Cards.length < 26) {
+      wiz1CardsDom.classList.remove('shadow')
+    }if (wiz2Cards.length < 26) {
+      wiz2CardsDom.classList.remove('shadow')
+    }if (wiz1Cards.length === 0){
+      wiz1Cards.classList.add('outline')
+    }if (wiz2Cards.length === 0){
+      wiz2Cards.classList.add('outline')
+    }if (battleCard1.length === 0){
+      battleCard1Dom.classList.add('outline')
+    }if (battleCard2.length === 0){
+      battleCard2Dom.classList.add('outline')
+    }if (battleCard1.length > 1) {
+      battleCard1Dom.classList.add('shadow')
+    }if (battleCard2.length > 1) {
+      battleCard2Dom.classList.add('shadow')
+    }
+  }
 
 function victory(){
   if (wiz1Cards.length === 0 && battleCard1.length === 0) {

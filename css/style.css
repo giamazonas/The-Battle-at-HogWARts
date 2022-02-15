@@ -1,3 +1,16 @@
+html {
+  box-sizing: border-box
+}
+*, 
+*::before, 
+*::after { 
+
+  box-sizing: inherit;
+}
+
+:root {
+  font-size: 62.5%;
+}
 body {
   cursor: url('<http://www.rw-designer.com/cursor-set/wand>'),auto,  !important;
   font-family: 'Gideon Roman', cursive;
@@ -13,12 +26,11 @@ h1 {
 h3{
 align-items: center;
 }
-div.gameOver {
+.gameOver {
   align-self: center;
 }
 
-div .battlefield {
-  background-color: blue;
+.battlefield {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -40,8 +52,8 @@ div #deck-start1 {
 div #deck-start2 {
   flex: 4 200px;
 } */
-div .gameOver {
+.gameOver {
   display: flex;
-  outline: red;
+  background-color: red;
 }
 
