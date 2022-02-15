@@ -60,8 +60,8 @@ function shuffle(){
   }
 }
 // console.log('OG DECK', deck)
-// console.log('FIRST DECK', wiz1Cards)
-// console.log('SECOND DECK', wiz2Cards)
+console.log('FIRST DECK', wiz1Cards)
+console.log('SECOND DECK', wiz2Cards)
 
 function handleClick1() {
   // console.log(`handleClick1`)
@@ -73,6 +73,7 @@ function handleClick1() {
     console.log(`battleCard1`, battleCard1)
     battleCard1Dom.classList.add(cardPicked1)
   }
+
   renderCompare()
   gameOverBtn.setAttribute("hidden", true)
 }
@@ -92,56 +93,73 @@ function handleClick2() {
 }
 
 function renderCompare() {
+
   if (cardPicked1 === null || cardPicked2 === null) return
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]
   console.log(`first cardPicked1`, cardPicked1)
   console.log(`first cardPicked2`, cardPicked2)
   if (cardValue2 > cardValue1){
-    let loseCard = battleCard1.pop()
-    console.log(`lose card`, loseCard)
-    wiz2Cards.push(loseCard)    
-    let winCard = battleCard2.pop()
-    wiz2Cards.push(winCard)
+    // console.log('win2cards', wiz2Cards)
+    wiz2Cards = [...battleCard1,...battleCard2,...wiz2Cards]
+    // console.log('win2cards', wiz2Cards)
+    battleCard1 = []
+    battleCard2 = []
     message.textContent = `Draco Malfoy takes the advantage`
-    setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 2000)
-    setTimeout(() => (battleCard1Dom.classList.remove(cardPicked1)), 2000)
+    setTimeout(() => {
+      battleCard1Dom.classList.remove(cardPicked1)
+      battleCard2Dom.classList.remove(cardPicked2)
+      cardPicked1 = null
+      cardPicked2 = null
+      }, 2000)
   }
   else if (cardValue1 > cardValue2){
-    let loseCard = battleCard2.pop()
-    wiz1Cards.push(loseCard)    
-    let winCard = battleCard1.pop()
-    wiz1Cards.push(winCard)
+    // console.log('wiz1cards', wiz1Cards)
+    wiz1Cards = [...battleCard1,...battleCard2,...wiz1Cards]
+    // console.log('wiz1cards', wiz1Cards)
+  
+    battleCard1 = []
+    battleCard2 = []
     message.textContent = `Harry Potter takes the advantage` 
-    setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 2000)
-    setTimeout(() => (battleCard1Dom.classList.remove(cardPicked1)), 2000)
+    setTimeout(() => {
+      battleCard1Dom.classList.remove(cardPicked1)
+      battleCard2Dom.classList.remove(cardPicked2)
+      cardPicked1 = null
+      cardPicked2 = null
+      }, 2000)
+    // setTimeout(() => (console.log(`hello`)), 2000)
   }
   else if (cardValue1 === cardValue2) {
-    console.log('TIE happens')
+    console.log('TIE happens', cardPicked2)
     message.textContent = `They parried your spell! Strike again!`
+    cardPicked1 = null
+    cardPicked2 = null
     tiePlay()
   }    
+  console.log(`TIE`, wiz1Cards, wiz2Cards)
   gameOverBtn.setAttribute("hidden", true)
   // render()
   victory()
 }
 
 function tiePlay(){
-  let tiePlayCards1 = wiz1Cards.slice(-2)
-  battleCard1.push(tiePlayCards1)
-  let cardsPicked1 = wiz1Cards.pop()
-  battleCard1.push(cardsPicked1)
+  // console.log(cardPicked1, cardPicked2)
+
+  let tiePlayCards1 = wiz1Cards.splice(-2, 2)
+  battleCard1 = [...tiePlayCards1,...battleCard1]
+  cardPicked1 = wiz1Cards.pop()
+  battleCard1.push(cardPicked1)
   console.log(`tieplaycards 1`, tiePlayCards1)
   // console.log(`cardPicked2`, cardPicked2)
 
-  let tiePlayCards2 = wiz2Cards.slice(-2)
-  battleCard2.push(tiePlayCards2)
-  let cardPicked2 = wiz2Cards.pop()
+  let tiePlayCards2 = wiz2Cards.splice(-2, 2)
+  battleCard2 = [...tiePlayCards2,...battleCard2]
+  cardPicked2 = wiz2Cards.pop()
   battleCard2.push(cardPicked2)
   console.log(`tieplaycards 1`, tiePlayCards2)
   console.log(`cardPicked2`, cardPicked2)
 console.log(`compare should start again`)
-  // renderCompare()
+  renderCompare()
   }
 
   function render(){
