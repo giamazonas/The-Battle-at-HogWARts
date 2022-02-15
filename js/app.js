@@ -62,14 +62,14 @@ function shuffle(){
 // console.log('SECOND DECK', wiz2Cards)
 
 
-function handleClick1(){
-  console.log(`handleClick1`)
+function handleClick1() {
+  // console.log(`handleClick1`)
   if (wiz1Cards.length > 0){
-    console.log('wiz1Cars', wiz1Cards)
+    // console.log('wiz1Cars', wiz1Cards)
     cardPicked1 = wiz1Cards.pop()
-    console.log('cardpickd1', cardPicked1)
+    // console.log('cardpickd1', cardPicked1)
     battleCard1.push(cardPicked1)
-    console.log(`battleCard1`, battleCard1)
+    // console.log(`battleCard1`, battleCard1)
     battleCard1Dom.classList.add(cardPicked1)
   }
   renderCompare()
@@ -78,23 +78,20 @@ function handleClick1(){
 
 
 function handleClick2() { 
-  console.log(`handleClick2`)
+  // console.log(`handleClick2`) 
   if (wiz2Cards.length > 0){
-    console.log('wiz2Cars', wiz2Cards)
+    // console.log('wiz2Cars', wiz2Cards)
     cardPicked2 = wiz2Cards.pop()
-    console.log(`cardPicked2`, cardPicked2)
+    // console.log(`cardPicked2`, cardPicked2)
     battleCard2.push(cardPicked2)
-    console.log(`battleCard2`, battleCard2)
+    // console.log(`battleCard2`, battleCard2)
     battleCard2Dom.classList.add(cardPicked2)
   }
   renderCompare()
   gameOverBtn.setAttribute("hidden", true)
 }
 
-
 function render(){
-  // gameStatus.textContent = message
-  // console.log(`render invoked`)
   if (battleCard1.length > 0){
     battleCard1Dom.classList.remove('back-red')
   }
@@ -135,50 +132,57 @@ function render(){
 
 function renderCompare() {
   if (cardPicked1 === null || cardPicked2 === null) return
-  // console.log(cardPicked1, cardPicked2)
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]
+  console.log(`first cardPicked1`, cardPicked1)
+  console.log(`first cardPicked2`, cardPicked2)
   if (cardValue2 > cardValue1){
     let loseCard = battleCard1.pop()
     wiz2Cards.push(loseCard)    
     let winCard = battleCard2.pop()
     wiz2Cards.push(winCard)
-    // console.log(`Malfoy2 wins`)
     message.textContent = `Draco Malfoy takes the advantage`
-    setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 4000)
-    setTimeout(() => (battleCard1Dom.classList.remove(cardPicked1)), 4000)
+    setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 2000)
+    setTimeout(() => (battleCard1Dom.classList.remove(cardPicked1)), 2000)
+
   }
   else if (cardValue1 > cardValue2){
     let loseCard = battleCard2.pop()
     wiz1Cards.push(loseCard)    
     let winCard = battleCard1.pop()
     wiz1Cards.push(winCard)
-    // console.log(`Potter1 wins`)
     message.textContent = `Harry Potter takes the advantage` 
-    setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 4000)
-    setTimeout(() => (battleCard1Dom.classList.remove(cardPicked1)), 4000)
+    setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 2000)
+    setTimeout(() => (battleCard1Dom.classList.remove(cardPicked1)), 2000)
+
   }
   else if (cardValue1 === cardValue2) {
-    // console.log('TIE')
+    console.log('TIE')
     message.textContent = `They parried your spell! Strike again!`
-    // tiePlay()
+    tiePlay()
   }    
   gameOverBtn.setAttribute("hidden", true)
   // render()
   victory()
 }
 
-// function tiePlay(){
-//   let tiePlayCards1 = wiz1Cards.slice(-3)
-//   battleCard1.push(tiePlayCards1)
-//   // console.log(`tie`, tiePlayCards1)
+function tiePlay(){
+  let tiePlayCards1 = wiz1Cards.slice(-2)
+  battleCard1.push(tiePlayCards1)
+  let cardsPicked1 = wiz1Cards.pop()
+  battleCard1.push(cardsPicked1)
+  console.log(`tieplaycards 1`, tiePlayCards1)
+  console.log(`cardPicked2`, cardPicked2)
 
-//   tiePlayCards2 = wiz2Cards.slice(-3)
-//   battleCard1.push(tiePlayCards2)
-//   // console.log(`tie`, tiePlayCards2)
+  let tiePlayCards2 = wiz2Cards.slice(-2)
+  battleCard2.push(tiePlayCards2)
+  let cardPicked2 = wiz2Cards.pop()t
+  battleCard2.push(cardPicked2)
+  console.log(`tieplaycards 1`, tiePlayCards2)
+  console.log(`cardPicked2`, cardPicked2)
 
-//   renderCompare()
-//   }
+  // renderCompare()
+  }
 
 
 function victory(){
