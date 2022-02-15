@@ -15,25 +15,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gideon+Roman&family=Oranienbaum&family=PT+Serif&display=swap" rel="stylesheet">
 
-  <title> The Battle at HogWARts </title>
+  <title> THE BATTLE AT HOGWARTS </title>
 </head>
 <body>
-  <h1> The Battle at HogWARts </h1>
-
-
+  <h1> THE BATTLE AT HOGWARTS </h1>
   <div class="battlefield">
-
-    <div id="deckBF1" class="card small outline"></div>
-    <div id="deckBF2" class="card small outline"></div>  
-    <div id="deck-start1" class="card small card back shadow"></div>
-    <button id="btnW1" class="btn" type=""hidden> Collect spoil 1 </button>
-    <div id="deck-start2" class="card small card back shadow"></div>
-    <button id="btnW2" class="btn" type="" hidden> Collect spoil 2 </button>
+    <div class="battle">
+      <div id="deckBF1" class="card small outline"></div>
+      <div id="deckBF2" class="card small outline"></div>  
+    </div>
+    <div class="players">
+      <div id="deck-start1" class="card small card back shadow"></div>
+      <div id="deck-start2" class="card small card back shadow"></div>
+    </div>
+    <div class="hidden-buttons">
+      <button id="btnW1" class="btn" type=""> Collect spoil 1 </button>
+      <button id="btnW2" class="btn" type="" > Collect spoil 2 </button>
+    </div>
   </div>
     <!-- <button class="btn btn-secondary" id="tieBtn" type="tie" hidden> Book of Spells </button> -->
   <div class="gameOver">
-
-    <h3 id="message">  </h3>
+    <h3 id="message">  hello message </h3>
     <button type="button" hidden class="btn btn-outline-dark" id='gameOverBtn' > Play again? </button>
   </div>
 
