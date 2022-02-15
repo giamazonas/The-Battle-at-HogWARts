@@ -27,6 +27,8 @@ const tieBtn = document.querySelector('#tieBtn')
 const gameStatus = document.querySelector('#message')
 const gameOverBtn = document.querySelector('#gameOverBtn')
 
+// document.body.style.cursor
+
 //** */  Event listeners
 
 document.getElementById('deck-start1').addEventListener('click', handleClick1)

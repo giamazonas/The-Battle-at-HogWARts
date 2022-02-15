@@ -12,7 +12,8 @@ html {
   font-size: 62.5%;
 }
 body {
-  cursor: url('<http://www.rw-designer.com/cursor-set/wand>'),auto,  !important;
+  cursor: url('../assets/WandD.cur'), auto  !important;
+
   font-family: 'Gideon Roman', cursive;
   font-family: 'Oranienbaum', serif;
   font-family: 'PT Serif', serif;
@@ -36,22 +37,22 @@ align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
   flex: 200px;
-  outline: blue;
 
 
 }
-/* div #deckBF1 {
+/* #deckBF1 {
   flex: 1 200px;
 }
-div #deckBF2 {
+#deckBF2 {
   flex: 2 200px;
 }
-div #deck-start1 {
+#deck-start1 {
   flex: 3 200px;
 }
-div #deck-start2 {
+#deck-start2 {
   flex: 4 200px;
-} */
+}  */
+
 .gameOver {
   display: flex;
   background-color: red;
