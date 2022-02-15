@@ -67,7 +67,7 @@ function handleClick1() {
   if (wiz1Cards.length > 0){
     // console.log('wiz1Cars', wiz1Cards)
     cardPicked1 = wiz1Cards.pop()
-    // console.log('cardpickd1', cardPicked1)
+    console.log('cardpickd1', cardPicked1)
     battleCard1.push(cardPicked1)
     // console.log(`battleCard1`, battleCard1)
     battleCard1Dom.classList.add(cardPicked1)
@@ -82,7 +82,7 @@ function handleClick2() {
   if (wiz2Cards.length > 0){
     // console.log('wiz2Cars', wiz2Cards)
     cardPicked2 = wiz2Cards.pop()
-    // console.log(`cardPicked2`, cardPicked2)
+    console.log(`cardPicked2`, cardPicked2)
     battleCard2.push(cardPicked2)
     // console.log(`battleCard2`, battleCard2)
     battleCard2Dom.classList.add(cardPicked2)

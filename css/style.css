@@ -3,21 +3,43 @@ body {
   font-family: 'Gideon Roman', cursive;
   font-family: 'Oranienbaum', serif;
   font-family: 'PT Serif', serif;
+  align-items: center;
+  justify-content: center;
 }
 h1 {
-
+  align-items: center;
 }
 
 h3{
-
+align-items: center;
+}
+div.gameOver {
+  align-self: center;
 }
 
 div .battlefield {
+  background-color: blue;
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex: 200px;
   outline: blue;
 
-}
 
+}
+/* div #deckBF1 {
+  flex: 1 200px;
+}
+div #deckBF2 {
+  flex: 2 200px;
+}
+div #deck-start1 {
+  flex: 3 200px;
+}
+div #deck-start2 {
+  flex: 4 200px;
+} */
 div .gameOver {
   display: flex;
   outline: red;
