@@ -139,16 +139,20 @@ function renderCompare() {
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]
   if (cardValue2 > cardValue1){
-    let cardToRemove = (battleCard1 && battleCard2)
-    wiz2Cards.unshift(cardToRemove)
+    let loseCard = battleCard1.pop()
+    wiz2Cards.push(loseCard)    
+    let winCard = battleCard2.pop()
+    wiz2Cards.push(winCard)
     // console.log(`Malfoy2 wins`)
     message.textContent = `Draco Malfoy takes the advantage`
     setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 4000)
     setTimeout(() => (battleCard1Dom.classList.remove(cardPicked1)), 4000)
   }
   else if (cardValue1 > cardValue2){
-    let cardToRemove = (battleCard1 && battleCard2)
-    wiz1Cards.unshift(cardToRemove)
+    let loseCard = battleCard2.pop()
+    wiz1Cards.push(loseCard)    
+    let winCard = battleCard1.pop()
+    wiz1Cards.push(winCard)
     // console.log(`Potter1 wins`)
     message.textContent = `Harry Potter takes the advantage` 
     setTimeout(() => (battleCard2Dom.classList.remove(cardPicked2)), 4000)
