@@ -64,7 +64,6 @@ function handleClick1() {
     battleCard1.push(cardPicked1)
     battleCard1Dom.classList.add(cardPicked1)
   }
-  // pause()
   renderCompare()
   gameOverBtn.setAttribute("hidden", true)
 }
@@ -75,19 +74,12 @@ function handleClick2() {
     battleCard2.push(cardPicked2)
     battleCard2Dom.classList.add(cardPicked2)
   }
-  // pause()
   renderCompare()
   gameOverBtn.setAttribute("hidden", true)
 }
 
-// function pause() {
-//   if (handleClick2() && handleClick1())
-//   setTimeout(function(){
-//     console.log(`timeout`, pause)
-//   }, 2000)
-// }
-
 function renderCompare() {
+
   if (cardPicked1 === null || cardPicked2 === null) return
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]

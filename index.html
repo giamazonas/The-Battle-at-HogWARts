@@ -17,25 +17,22 @@
   <title> THE BATTLE AT HOGWARTS </title>
 </head>
 <body>
-  <h1 id="title"> THE BATTLE AT HOGWARTS </h1>
-  <h3 id="message">  hello message </h3>
-  <div class="battlefield">
-    <div class="battle">
-      <div id="deckBF1" class="card small outline"></div>
-      <div id="deckBF2" class="card small outline"></div>  
+  <board class="board">
+    <h1 id="title"> THE BATTLE AT HOGWARTS </h1>
+    <h3 id="message">  hello message </h3>
+    <div class="battlefield">
+      <div class="battle">
+        <div id="deckBF1" class="card small outline"></div>
+        <div id="deckBF2" class="card small outline"></div>  
+      </div>
+      <div class="players">
+        <div id="deck-start1" class="card small card back shadow"></div>
+        <div id="deck-start2" class="card small card back shadow"></div>
+      </div>
+      <div class="replay">
+        <button type="button" class="btn btn-outline-dark" id="gameOverBtn"> Play again? </button>
+      </div>
     </div>
-    <div class="players">
-      <div id="deck-start1" class="card small card back shadow"></div>
-      <div id="deck-start2" class="card small card back shadow"></div>
-    </div>
-    <div class="hidden-buttons">
-      <button id="btnW1" class="btn" type="button" hidden> Collect spoil 1 </button>
-      <button id="btnW2" class="btn" type="button" hidden> Collect spoil 2 </button>
-    </div>
-  </div>
-  <div class="gameOver">
-    <button type="button"  class="btn btn-outline-dark" id='gameOverBtn' > Play again? </button>
-  </div>
-
+  </board>
 </body>
 </html>
