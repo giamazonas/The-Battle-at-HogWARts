@@ -167,3 +167,8 @@ function victory(){
   }
   gameOverBtn.removeAttribute('hidden')
 }
+
+// add cards in array counter
+// fix replay button??
+// timer on handleclick??
+// fix name pics on cellphone
