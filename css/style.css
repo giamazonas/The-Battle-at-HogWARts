@@ -1,11 +1,5 @@
 html {
   box-sizing: border-box;
-  /* background: url("./assets/castle-fire.jpeg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; */
-
 }
 *, 
 *::before, 
@@ -19,10 +13,9 @@ html {
 }
 body {
   cursor: url('../assets/WandD.cur'), auto  !important;
-  font-family: 'Gideon Roman', cursive;
-  font-family: 'Oranienbaum', serif;
-  font-family: 'PT Serif', serif;
-  /* align-items: center; */
+  font-family: 'Gideon Roman', 'Oranienbaum', 'PT Serif', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  margin: 0;
   justify-content: center;
   background-image: url("../assets/castle-fire.jpeg");
   background-color: #cccccc; 
@@ -30,24 +23,35 @@ body {
 
 h1 {
   align-items: center;
-  /* background-color: brown; */
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  justify-content: center;
+}
+h3 {
+  align-items: center;
+  align-items: center;
   display: flex;
   flex-direction: row;
   height: 100px;
   justify-content: center;
 }
 
-/* body > h3:last-child{ */
-
-/* } */
-
 div.battle {
   align-items: center; 
+  display: flex;
+  flex-direction: row;
+  height: 100px;
   justify-content: center;
   -ms-flex-align: center;
 }
 div.players {
-
+  align-items: center; 
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  justify-content: space-around;
+  -ms-flex-align: center;
 }
 
 .battlefield {
@@ -57,53 +61,56 @@ div.players {
   flex: 2;
   column-gap: 30px; 
   width: 100%;
-  /* flex-wrap: wrap; */
-  /* justify-content: space-between; */
-  /* flex: 200px; */
 }
-
-.hidden-buttons {
-  text: black;
-}
-/* 
-#deckBF1 {
-  flex: 1 auto;
-
-}
-#deckBF2 {
-  flex: 1 auto;
-  flex-direction: wrap;
-}
-#deck-start1 {
-flex: 2 auto;
-flex-direction: flex-end;
-}
-#deck-start2 {
-  flex: 2 auto;
-  flex-direction: flex-end;
-} */
 
 .gameOver {
-  display: flex;
-  justify-content: center;
-  text: gold;
-  text-shadow: white, 30px;
+  /* flex: ; */
+  /* text: black; */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* text: gold; */
+  /* text-shadow: white, 30px; */
   /* background-color: red; */
 }
-
-
 
 @media only screen and (min-width: 600px){
   body {
   width: 900px;
-  /* display: grid;
+  display: grid;
   grid-template-columns: 40% 60%;
   grid-template-rows: auto auto auto auto;
-      /* designing the grid - will apply to properties later*/
-  /* grid-template-areas: 
-    "status name"
-    "img occupation"
-    "img brand"
-    "contact offer"; */ 
+      /* designing the grid - will apply to properties later */
+  grid-template-areas: 
+    "title"
+    "message"
+    "battlefield"
+    "players"
   }
+}
+
+.title {
+  grid-area: title;
+  text-align: center;
+  justify-content: center;
+}
+.message {
+  grid-area: message;
+  font-style: bold;
+  text-align: center;
+  margin-top: auto;
+  
+}
+
+#battlefield{
+  grid-area: battlefield;
+  text-align: center;
+  justify-content: center;
+  -ms-flex-align: center;
+}
+
+#players{
+  grid-area: players;
+  text-align: center;
+  justify-content: space-around;
+  -ms-flex-align: center;
 }

@@ -6,7 +6,7 @@ const deck = ["dA","dQ","dK","dJ","d10","d09","d08","d07","d06","d05","d04","d03
 
 //**  */  Declare deck variables
 
-let cardsPicked, cardPicked1, cardPicked2, card, turn
+let cardPicked1, cardPicked2
 let wiz1Cards = []
 let wiz2Cards = []
 let cardToRemove = []
@@ -64,6 +64,7 @@ function handleClick1() {
     battleCard1.push(cardPicked1)
     battleCard1Dom.classList.add(cardPicked1)
   }
+  // pause()
   renderCompare()
   gameOverBtn.setAttribute("hidden", true)
 }
@@ -74,9 +75,17 @@ function handleClick2() {
     battleCard2.push(cardPicked2)
     battleCard2Dom.classList.add(cardPicked2)
   }
+  // pause()
   renderCompare()
   gameOverBtn.setAttribute("hidden", true)
 }
+
+// function pause() {
+//   if (handleClick2() && handleClick1())
+//   setTimeout(function(){
+//     console.log(`timeout`, pause)
+//   }, 2000)
+// }
 
 function renderCompare() {
   if (cardPicked1 === null || cardPicked2 === null) return
@@ -166,4 +175,3 @@ function victory(){
   }
   gameOverBtn.removeAttribute('hidden')
 }
-
