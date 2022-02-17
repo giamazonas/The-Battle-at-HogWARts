@@ -91,6 +91,7 @@ function renderCompare() {
     setTimeout(() => {
       clearBoard()
     }, 2000)
+    gameOverBtn.setAttribute("hidden", true)
   }
   else if (cardValue1 > cardValue2){
     wiz1Cards = [...battleCard1,...battleCard2,...wiz1Cards]
@@ -100,6 +101,7 @@ function renderCompare() {
     setTimeout(() => {
       clearBoard()
     }, 2000)
+    gameOverBtn.setAttribute("hidden", true)
   }
   else if (cardValue1 === cardValue2) {
     message.textContent = `They parried your spell! Strike again!`
@@ -107,8 +109,8 @@ function renderCompare() {
       clearBoard()
       tiePlay()
     }, 1000)
+    gameOverBtn.setAttribute("hidden", true)
   }    
-  gameOverBtn.setAttribute("hidden", true)
   render()
   victory()
 }
@@ -169,6 +171,4 @@ function victory(){
 }
 
 // add cards in array counter
-// fix replay button??
 // timer on handleclick??
-// fix name pics on cellphone
