@@ -44,6 +44,7 @@ function init(){
   cardPicked2 = null
   shuffle()
   render()
+
 }
 
 function shuffle(){
@@ -165,7 +166,3 @@ function render(){
     battleCard2Dom.classList.add('shadow')
   }
 }
-
-
-// add cards in array counter
-// timer on handleclick??

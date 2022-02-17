@@ -23,6 +23,9 @@ ___________________
 Here, you can play [The Battle at HogWARts](forgetful-current.surge.sh/)
 <br>
 <br>
+Click on Harry's or Draco's deck of cards to play! 
+<br>
+<br>
 
 ### SCREENSHOTS
 ___________
@@ -38,6 +41,7 @@ Currently..<br>
 ![current photo](assets/current.jpg)
 <br>
 <br>
+
 
 ### TECH USED
 ________________
