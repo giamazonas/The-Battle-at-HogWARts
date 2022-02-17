@@ -40,7 +40,6 @@ init()
 
 function init(){
   message.textContent = `Wands at the ready!`
-  gameOverBtn.setAttribute('hidden', true) 
   cardPicked1 = null
   cardPicked2 = null
   shuffle()
@@ -62,24 +61,29 @@ function handleClick1() {
   if (wiz1Cards.length > 0){
     cardPicked1 = wiz1Cards.pop()
     battleCard1.push(cardPicked1)
+    battleCard1Dom.classList.remove('outline')
     battleCard1Dom.classList.add(cardPicked1)
+    renderCompare()
+  }else if (wiz1Cards.length === 0 && battleCard1.length === 0) {
+    return message.textContent `Draco Malfoy is the victor! Harry Potter died bravely in battle.`
+    gameOverBtn.removeAttribute('hidden')
   }
-  renderCompare()
-  gameOverBtn.setAttribute("hidden", true)
 }
 
 function handleClick2() {  
   if (wiz2Cards.length > 0){
     cardPicked2 = wiz2Cards.pop()
     battleCard2.push(cardPicked2)
+    battleCard2Dom.classList.remove('outline')
     battleCard2Dom.classList.add(cardPicked2)
+    renderCompare()
+  }else if (wiz2Cards.length === 0 && battleCard2.length === 0) {
+    return message.textContent = `Harry Potter is the victor! Draco Malfoy died bravely in battle.`
+    gameOverBtn.removeAttribute('hidden')
   }
-  renderCompare()
-  gameOverBtn.setAttribute("hidden", true)
 }
 
 function renderCompare() {
-
   if (cardPicked1 === null || cardPicked2 === null) return
   const cardValue1 = keyValues[cardPicked1]
   const cardValue2 = keyValues[cardPicked2]
@@ -88,31 +92,29 @@ function renderCompare() {
     battleCard1 = []
     battleCard2 = []
     message.textContent = `Draco Malfoy takes the advantage`
+    message.style.color = 'green'
     setTimeout(() => {
       clearBoard()
-    }, 2000)
-    gameOverBtn.setAttribute("hidden", true)
+    }, 1000)
   }
   else if (cardValue1 > cardValue2){
     wiz1Cards = [...battleCard1,...battleCard2,...wiz1Cards]
     battleCard1 = []
     battleCard2 = []
     message.textContent = `Harry Potter takes the advantage` 
+    message.style.color = 'darkred'
     setTimeout(() => {
       clearBoard()
-    }, 2000)
-    gameOverBtn.setAttribute("hidden", true)
+    }, 1000)
   }
   else if (cardValue1 === cardValue2) {
     message.textContent = `They parried your spell! Strike again!`
     setTimeout(() => {
       clearBoard()
       tiePlay()
-    }, 1000)
-    gameOverBtn.setAttribute("hidden", true)
+    }, 2000)
   }    
   render()
-  victory()
 }
 
 function clearBoard() {
@@ -120,6 +122,12 @@ function clearBoard() {
   battleCard2Dom.classList.remove(cardPicked2)
   cardPicked1 = null
   cardPicked2 = null
+  resetCardBack()
+}
+
+function resetCardBack() {
+  battleCard1Dom.classList.add('outline')
+  battleCard2Dom.classList.add('outline')
 }
 
 function tiePlay(){
@@ -131,8 +139,11 @@ function tiePlay(){
   battleCard2 = [...tiePlayCards2,...battleCard2]
   cardPicked2 = wiz2Cards.pop()
   battleCard2.push(cardPicked2)
+  battleCard1Dom.classList.remove('outline')
+  battleCard2Dom.classList.remove('outline')
   battleCard1Dom.classList.add(cardPicked1)
-  battleCard2Dom.classList.add(cardPicked2)
+  battleCard2Dom.classList.add(cardPicked2) 
+  // message.textContent = `Wands at the ready!`
   renderCompare()
 }
 
@@ -149,10 +160,8 @@ function render(){
     wiz1Cards.classList.add('outline')
   }if (wiz2Cards.length === 0){
     wiz2Cards.classList.add('outline')
-  }if (battleCard1.length === 0){
-    battleCard1Dom.classList.add('outline')
-  }if (battleCard2.length === 0){
-    battleCard2Dom.classList.add('outline')
+  // }if (battleCard1.length === 0){
+ 
   }if (battleCard1.length > 1) {
     battleCard1Dom.classList.add('shadow')
   }if (battleCard2.length > 1) {
@@ -160,15 +169,6 @@ function render(){
   }
 }
 
-function victory(){
-  if (wiz1Cards.length === 0 && battleCard1.length === 0) {
-    return message.textContent `Draco Malfoy is the victor! Harry Potter died bravely in battle.`
-  }
-  else if (wiz2Cards.length === 0 && battleCard2.length === 0) {
-    return message.textContent = `Harry Potter is the victor! Draco Malfoy died bravely in battle.`
-  }
-  gameOverBtn.removeAttribute('hidden')
-}
 
 // add cards in array counter
 // timer on handleclick??
