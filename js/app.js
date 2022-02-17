@@ -143,7 +143,6 @@ function tiePlay(){
   battleCard2Dom.classList.remove('outline')
   battleCard1Dom.classList.add(cardPicked1)
   battleCard2Dom.classList.add(cardPicked2) 
-  // message.textContent = `Wands at the ready!`
   renderCompare()
 }
 
@@ -160,8 +159,6 @@ function render(){
     wiz1Cards.classList.add('outline')
   }if (wiz2Cards.length === 0){
     wiz2Cards.classList.add('outline')
-  // }if (battleCard1.length === 0){
- 
   }if (battleCard1.length > 1) {
     battleCard1Dom.classList.add('shadow')
   }if (battleCard2.length > 1) {

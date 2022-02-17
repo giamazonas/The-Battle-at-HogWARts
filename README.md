@@ -3,17 +3,22 @@
 
 > "We must try not to sink beneath our anguish, but battle on." ~Albus Dumbledore
 
-War is a card game typically played between two people. The deck is split into two, and each turn consists of playing one card to the pot, and comparing their values.<br>
+War is a card game typically played between two people.
+<br>
+The deck is split into two, and each turn consists of playing one card to the pot, and comparing their values.
+<br>
 Winner is the player with the highest value card, and they add both cards to their personal deck.
 <br>
+<br>
 In the case of a tie, three cards from each player are added to the pot, and the last played card by each player, is compared again to find the winner of the entire pot. <br>
-Game continues until one player has all the cards in their personal deck, making them the winner.<br>
+Game continues until one player has all the cards in their personal deck, making them the winner.
+<br>
 <br>
 I grew up playing war as we sat and waited on our parents in various scenarios, so I have a lot of fond memories around it. Having a mobile game, without having to always have your deck of cards with you, would have been amazing! There are also a lot of Harry Potter fans in my circles, and so this seemed like the perfect combination of worlds. 
 <br>
 <br>
 
-### PLAY HERE  
+## PLAY HERE  
 ___________________
 Here, you can play [The Battle at HogWARts](forgetful-current.surge.sh/)
 <br>
@@ -29,20 +34,21 @@ A little later..
 ![progress made photo](assets/ongoing.jpg)
 <br>
 <br>
-Currently..
+Currently..<br>
 ![current photo](assets/current.jpg)
 <br>
 <br>
+
 ### TECH USED
 ________________
 
-1. HTML
-2. CSS
-3. JavaScript
-4. Bootstrap
-5. Visual Studio Code
-6. macOS Monterey 12.1
-7. Git
+1. <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+2. <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+3. <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+4. <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white">
+5. <img src="https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white">
+6. <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
+7. Visual Studio Code
 <br>
 <br>
 
@@ -84,5 +90,5 @@ ______________________________
 ![Hogwart's Houses deck](images/backs/cardBack.jpg)
 <br>
 <br>
-[Favicon](https://realfavicongenerator.net/#.Ygh3SPXMJJU)
+[Favicon](https://realfavicongenerator.net/#.Ygh3SPXMJJU)<br>
 ![my favicon](assets/apple-touch-icon.png)
