@@ -21,8 +21,6 @@ let battlefield = document.querySelectorAll('.battlefield')
 
 let wiz1CardsDom = document.getElementById('deck-start1')
 let wiz2CardsDom = document.getElementById('deck-start2')
-// let wandW1 = document.getElementById('btnW1')
-// let wandW2 = document.getElementById('btnW2')
 const tieBtn = document.querySelector('#tieBtn')
 const gameStatus = document.querySelector('#message')
 const gameOverBtn = document.querySelector('#gameOverBtn')
@@ -110,6 +108,7 @@ function renderCompare() {
   }
   else if (cardValue1 === cardValue2) {
     message.textContent = `They parried your spell! Strike again!`
+    message.style.color = '#0f0401'
     setTimeout(() => {
       clearBoard()
       tiePlay()

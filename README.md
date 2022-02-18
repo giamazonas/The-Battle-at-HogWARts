@@ -1,33 +1,29 @@
 
-# The Battle at HogWARts
+# The Battle at HogWARts 
 
-> "We must try not to sink beneath our anguish, but battle on." ~Albus Dumbledore
+> "We must try not to sink beneath our anguish, but battle on." ~Albus Dumbledore  🧙🏼‍♂️
 
 War is a card game typically played between two people.
 <br>
-The deck is split into two, and each turn consists of playing one card to the pot, and comparing their values.
+The deck is split into two, and each turn consists of playing one card each to the pot, and comparing their values.
 <br>
-Winner is the player with the highest value card, and they add both cards to their personal deck.
+Winner is the player with the highest value card, and they then add both cards to their personal deck.
 <br>
 <br>
-In the case of a tie, three cards from each player are added to the pot, and the last played card by each player, is compared again to find the winner of the entire pot. <br>
+In the case of a tie, three cards from each player are added to the pot, and the last played card by each player is compared again to find the winner of the entire pot. <br>
 Game continues until one player has all the cards in their personal deck, making them the winner.
 <br>
 <br>
-I grew up playing war as we sat and waited on our parents in various scenarios, so I have a lot of fond memories around it. Having a mobile game, without having to always have your deck of cards with you, would have been amazing! There are also a lot of Harry Potter fans in my circles, and so this seemed like the perfect combination of worlds. 
-<br>
-<br>
 
+I grew up playing War as we sat and waited on our parents in various scenarios, so I have a lot of fond memories around it. Having a mobile game, without having to always have your deck of cards with you, would have been amazing! There are also a lot of Harry Potter fans in my circles, and so this seemed like the perfect combination of worlds. 🍻
+<br>
+<br>
 ## PLAY HERE  
 ___________________
-Here, you can play <br>
-[The Battle at HogWARts](https://giamazonas.github.io/the-battle-at-hogwarts/) via Github 
-<br>
-
-Click on Harry's or Draco's deck of cards to play! 
+Click here, on 🦁 Harry's or 🐍  Draco's deck of cards, to play <br>
+[The Battle at HogWARts](https://giamazonas.github.io/the-battle-at-hogwarts/)  
 <br>
 <br>
-
 ### SCREENSHOTS
 ___________
 Early on..
@@ -44,7 +40,7 @@ Currently..<br>
 <br>
 
 
-### TECH USED
+### TECH USED 🧙🏼
 ________________
 
 1. <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
@@ -57,11 +53,11 @@ ________________
 <br>
 <br>
 
-### ICEBOX
+### ICEBOX ⏳ ❤️‍🔥
 ___________________
 
-- add music option
 - show tie play cards
+- add music option
 - update face of cards
 - show how many cards players hold in their deck
 - animated feature for when loser dies
@@ -71,7 +67,7 @@ ___________________
 <br>
 <br>
 
-### CREDITS
+### CREDITS ♦️♥️♣️♠️
 ______________________________
 [Card deck CSS](https://github.com/SEI-Remote/css-card-deck) from [General Assembly](https://generalassemb.ly/?&topic=&mkt_account_id=1056949875&mkt_campaign_id=691778069&mkt_ad_group_id=31181421810&mkt_device_type=c&mkt_keyword=general%20assembly&mkt_matchtype=e&mkt_placement=&mkt_ad_id=155524967456&mkt_network=g&mkt_target_id=kwd-459322816&mkt_feed_item_id=&utm_source=google&utm_medium=paid-search-bra&utm_campaign=TS:TX:BRA:ATL:BR:GeneralAssembly&utm_content=campus-lead-lander&utm_term=general%20assembly&gclid=CjwKCAiAgbiQBhAHEiwAuQ6BkqbMH5fVCFXKK55K1Yhy-DlFh9WwyoSdgq-RN8ttAsA7U-N4LscdGhoCREYQAvD_BwE)
 <br>
