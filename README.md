@@ -20,9 +20,10 @@ I grew up playing war as we sat and waited on our parents in various scenarios, 
 
 ## PLAY HERE  
 ___________________
-Here, you can play [The Battle at HogWARts](forgetful-current.surge.sh/)
+Here, you can play <br>
+[The Battle at HogWARts](https://giamazonas.github.io/the-battle-at-hogwarts/) via Github 
 <br>
-<br>
+
 Click on Harry's or Draco's deck of cards to play! 
 <br>
 <br>
